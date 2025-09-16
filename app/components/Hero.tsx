@@ -7,34 +7,51 @@ const FeatureCard = ({
   icon,
   title,
   isActive = false,
-  description
+  description,
+  isNewlyActive = false
 }: {
   icon: string
   title: React.ReactNode
   isActive?: boolean
   description?: React.ReactNode
+  isNewlyActive?: boolean
 }) => {
   return (
     <div className={`
       flex flex-col gap-6 px-6 py-8 rounded-2xl h-[204px] justify-center relative
       ${isActive
-        ? 'bg-white border-2 border-slate-200 shadow-[0px_4px_14px_0px_rgba(93,95,239,0.5)]'
-        : 'bg-[#afaeff] border border-white shadow-[0px_10px_15px_0px_rgba(0,0,0,0.05)]'
+        ? 'bg-white border-2 border-slate-200 shadow-[0px_4px_14px_0px_rgba(93,95,239,0.5)] items-center'
+        : 'bg-[#afaeff] border border-white shadow-[0px_10px_15px_0px_rgba(0,0,0,0.05)] items-start'
       }
     `}>
       <div className={`
         w-14 h-14 rounded-full flex items-center justify-center
         ${isActive ? 'bg-white' : 'bg-[#7879f1]'}
         shadow-[0px_10px_15px_-3px_rgba(93,95,239,0.5)]
+        ${isNewlyActive ? 'animate-fadeIn' : ''}
       `}>
         <Image src={icon} alt="" width={32} height={32} />
       </div>
       <div className={`
         ${isActive ? 'text-[#020618] font-normal text-center' : 'text-[#314158] font-medium'}
         ${description ? '' : 'text-xl leading-5'}
+        ${isNewlyActive ? 'animate-fadeIn' : ''}
       `}>
         {description || title}
       </div>
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-in-out;
+        }
+      `}</style>
     </div>
   )
 }
@@ -43,6 +60,7 @@ const CardRow = ({ cards }: { cards: any[] }) => {
   const [cardOrder, setCardOrder] = useState([0, 1, 2, 3])
   const [animatingCard, setAnimatingCard] = useState<number | null>(null)
   const [animationPhase, setAnimationPhase] = useState<'idle' | 'moving-down' | 'moving-left' | 'sliding-right'>('idle')
+  const [newlyActiveCard, setNewlyActiveCard] = useState<number | null>(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,6 +76,8 @@ const CardRow = ({ cards }: { cards: any[] }) => {
       // Phase 2: Start sliding other cards right while card moves left
       setTimeout(() => {
         setAnimationPhase('sliding-right')
+        // Mark the card that will become active
+        setNewlyActiveCard(cardOrder[2])
       }, 400)
 
       // Phase 3: Update order
@@ -71,6 +91,11 @@ const CardRow = ({ cards }: { cards: any[] }) => {
         setAnimatingCard(null)
         setAnimationPhase('idle')
       }, 1000)
+
+      // Clear newly active after animation completes
+      setTimeout(() => {
+        setNewlyActiveCard(null)
+      }, 1800)
     }, 3000)
 
     return () => clearInterval(interval)
@@ -137,6 +162,7 @@ const CardRow = ({ cards }: { cards: any[] }) => {
               title={card.title}
               isActive={isActive}
               description={isActive ? card.description : undefined}
+              isNewlyActive={isActive && newlyActiveCard === originalIndex}
             />
           </div>
         )
