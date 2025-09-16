@@ -1,142 +1,116 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import React from 'react'
 
+// Define types for client properties
 interface Client {
   name: string
-  logo: React.ReactNode
+  logo: string
+  superLarge?: boolean
+  extraLarge?: boolean
+  smaller?: boolean
+  extraSmall?: boolean
 }
 
+// Company logos
+const zignalyLogo = "/assets/Images/MartechLandingPage/Zignaly-logo.png"
+const wellowsLogo = "/assets/Images/MartechLandingPage/Wellows - logo.png"
+const squatwolfLogo = "/assets/Images/MartechLandingPage/Squatwolf-logo.png"
+const puresquareLogo = "/assets/Images/MartechLandingPage/Puresquare-logo.png"
+const paklaunchLogo = "/assets/Images/MartechLandingPage/Palaunch-logo.png"
+const laamLogo = "/assets/Images/MartechLandingPage/Laam-logo.png"
+const littleUmbrellaLogo = "/assets/Images/MartechLandingPage/Little Umbrella-logo.png"
+const zamanatLogo = "/assets/Images/MartechLandingPage/Zamanat-logo.svg"
+const relveLogo = "/assets/Images/MartechLandingPage/Relve-logo.svg"
+
 const clients: Client[] = [
-  {
-    name: 'Web Affinity',
-    logo: (
-      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-600">WA</span>
-      </div>
-    )
-  },
-  {
-    name: 'Pure2',
-    logo: (
-      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-600">P2</span>
-      </div>
-    )
-  },
-  {
-    name: 'Pure2',
-    logo: (
-      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-600">P2</span>
-      </div>
-    )
-  },
-  {
-    name: 'Zignaly',
-    logo: (
-      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-600">Z</span>
-      </div>
-    )
-  },
-  {
-    name: 'Gaditek',
-    logo: (
-      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-600">G</span>
-      </div>
-    )
-  },
-  {
-    name: 'Squatwolf',
-    logo: (
-      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-600">SW</span>
-      </div>
-    )
-  },
-  {
-    name: 'Web Affinity',
-    logo: (
-      <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-        <span className="text-xs font-bold text-gray-600">WA</span>
-      </div>
-    )
-  }
+  { name: 'Zignaly', logo: zignalyLogo, extraLarge: true },
+  { name: 'Wellows', logo: wellowsLogo, extraSmall: true },
+  { name: 'Squatwolf', logo: squatwolfLogo, extraLarge: true },
+  { name: 'Puresquare', logo: puresquareLogo },
+  { name: 'Paklaunch', logo: paklaunchLogo },
+  { name: 'LAAM', logo: laamLogo, extraLarge: true },
+  { name: 'Little Umbrella', logo: littleUmbrellaLogo, superLarge: true },
+  { name: 'Zamanat', logo: zamanatLogo, superLarge: true },
+  { name: 'Relve', logo: relveLogo },
 ]
 
 export default function ClientLogos() {
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current
-    if (!scrollContainer) return
-
-    const scrollAnimation = () => {
-      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-        scrollContainer.scrollLeft = 0
-      } else {
-        scrollContainer.scrollLeft += 1
-      }
-    }
-
-    const intervalId = setInterval(scrollAnimation, 30)
-
-    return () => clearInterval(intervalId)
-  }, [])
-
   return (
-    <section className="w-full py-12 overflow-hidden">
-      <div className="relative">
-        {/* Gradient masks for edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+    <>
+      <style>{`
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.333%);
+          }
+        }
 
-        {/* Scrolling container */}
-        <div
-          ref={scrollRef}
-          className="flex gap-12 overflow-hidden"
-          style={{
-            maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
-            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
-          }}
-        >
-          {/* Double the clients for infinite scroll effect */}
-          <div className="flex gap-12 animate-scroll">
-            {[...clients, ...clients].map((client, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 shrink-0 opacity-60 hover:opacity-100 transition-opacity"
-              >
-                {client.logo}
-                <span className="text-[#5d5fef] text-xl font-light whitespace-nowrap">
-                  {client.name}
-                </span>
+        .animate-scroll-left {
+          animation: scroll-left 30s linear infinite;
+          will-change: transform;
+        }
+      `}</style>
+
+      <div className="flex flex-col items-center justify-center relative w-full overflow-hidden py-3 md:py-8">
+        <div className="h-[75px] md:h-[95px] mix-blend-luminosity overflow-hidden relative w-full">
+          {/* Scrolling container with tripled items for seamless infinite scroll */}
+          <div className="flex gap-[50px] md:gap-[80px] items-center animate-scroll-left whitespace-nowrap">
+            {/* First set of clients */}
+            {clients.map((client, index) => (
+              <div key={`client-1-${index}`} className="shrink-0 flex items-center">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className={`${
+                    client.superLarge ? 'h-[75px] md:h-[95px]' :
+                    client.extraLarge ? 'h-[70px] md:h-[90px]' :
+                    client.smaller ? 'h-[30px] md:h-[40px]' :
+                    client.extraSmall ? 'h-[20px] md:h-[30px]' :
+                    'h-[40px] md:h-[50px]'
+                  } w-auto object-contain`}
+                />
+              </div>
+            ))}
+
+            {/* Second duplicate set for seamless infinite scroll */}
+            {clients.map((client, index) => (
+              <div key={`client-2-${index}`} className="shrink-0 flex items-center">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className={`${
+                    client.superLarge ? 'h-[75px] md:h-[95px]' :
+                    client.extraLarge ? 'h-[70px] md:h-[90px]' :
+                    client.smaller ? 'h-[30px] md:h-[40px]' :
+                    client.extraSmall ? 'h-[20px] md:h-[30px]' :
+                    'h-[40px] md:h-[50px]'
+                  } w-auto object-contain`}
+                />
+              </div>
+            ))}
+
+            {/* Third duplicate set for even smoother transition */}
+            {clients.map((client, index) => (
+              <div key={`client-3-${index}`} className="shrink-0 flex items-center">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className={`${
+                    client.superLarge ? 'h-[75px] md:h-[95px]' :
+                    client.extraLarge ? 'h-[70px] md:h-[90px]' :
+                    client.smaller ? 'h-[30px] md:h-[40px]' :
+                    client.extraSmall ? 'h-[20px] md:h-[30px]' :
+                    'h-[40px] md:h-[50px]'
+                  } w-auto object-contain`}
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-    </section>
+    </>
   )
 }
