@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const FeatureCard = ({
   icon,
@@ -172,6 +172,42 @@ const CardRow = ({ cards }: { cards: any[] }) => {
 }
 
 export default function Hero() {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [videoKey, setVideoKey] = useState(0)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
+
+  // Handle intersection observer for auto-pause/play
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && isPlaying) {
+            // Reset to muted autoplay when scrolling out
+            setIsPlaying(false)
+            setVideoKey(prev => prev + 1)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    if (videoContainerRef.current) {
+      observer.observe(videoContainerRef.current)
+    }
+
+    return () => {
+      if (videoContainerRef.current) {
+        observer.unobserve(videoContainerRef.current)
+      }
+    }
+  }, [isPlaying])
+
+  const handlePlayClick = () => {
+    setIsPlaying(true)
+    setVideoKey(prev => prev + 1)
+  }
+
   const cards = [
     {
       icon: '/medal-icon.png',
@@ -218,15 +254,16 @@ export default function Hero() {
 
   return (
     <section className="w-full px-20 py-8">
-      <div className="max-w-[1297px] mx-auto rounded-[40px] bg-gradient-to-b from-[#d0cbfd] via-[#5d5fef] to-[#0a0449] relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 right-0 h-1/2 bg-[url('/grid-pattern.svg')] bg-repeat rotate-180" />
-          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-[url('/grid-pattern.svg')] bg-repeat" />
-        </div>
+      <div className="max-w-[1297px] mx-auto">
+        <div className="rounded-[40px] bg-gradient-to-b from-[#d0cbfd] via-[#5d5fef] to-[#0a0449] relative overflow-visible">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-20 rounded-[40px] overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1/2 bg-[url('/grid-pattern.svg')] bg-repeat rotate-180" />
+            <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-[url('/grid-pattern.svg')] bg-repeat" />
+          </div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center gap-10 px-14 py-10">
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center gap-10 px-14 pt-10 pb-[320px]">
           {/* Badge */}
           <div className="bg-white border border-[#a5a6f6] rounded-full px-6 py-1.5 flex items-center gap-1">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -252,56 +289,71 @@ export default function Hero() {
           {/* Feature Cards with Animation */}
           <CardRow cards={cards} />
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col gap-4 items-center">
-            <div className="flex gap-3">
-              <button className="px-6 py-2 bg-transparent border border-white text-white font-medium text-sm rounded-lg hover:bg-white/10 transition-colors">
-                Get Started For Free
-              </button>
-              <button className="px-6 py-2 bg-slate-100 text-[#0f172b] font-medium text-sm rounded-lg flex items-center gap-2 hover:bg-slate-200 transition-colors">
-                <Image src="assets/Images/MartechLandingPage/play.svg" alt="Play" width={20} height={20} />
-                Book a Demo
-              </button>
-            </div>
-            <div className="flex gap-8 text-sm text-slate-100">
-              <div className="flex items-center gap-1">
-                <Image src="assets/Images/MartechLandingPage/check-circle-one.svg" alt="Check" width={20} height={20} />
-                <span>No credit card required</span>
+            {/* CTA Buttons */}
+            <div className="flex flex-col gap-4 items-center">
+              <div className="flex gap-3">
+                <button className="px-6 py-2 bg-transparent border border-white text-white font-medium text-sm rounded-lg hover:bg-white/10 transition-colors">
+                  Get Started For Free
+                </button>
+                <button className="px-6 py-2 bg-slate-100 text-[#0f172b] font-medium text-sm rounded-lg flex items-center gap-2 hover:bg-slate-200 transition-colors">
+                  <Image src="/assets/Images/MartechLandingPage/play.svg" alt="Play" width={20} height={20} />
+                  Book a Demo
+                </button>
               </div>
-              <div className="flex items-center gap-1">
-                <Image src="assets/Images/MartechLandingPage/mingcute_time-line.svg" alt="Time" width={20} height={20} />
-                <span>Setup in under 5 minutes</span>
+              <div className="flex gap-8 text-sm text-slate-100">
+                <div className="flex items-center gap-1">
+                  <Image src="/assets/Images/MartechLandingPage/check-circle-one.svg" alt="Check" width={20} height={20} />
+                  <span>No credit card required</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Image src="/assets/Images/MartechLandingPage/mingcute_time-line.svg" alt="Time" width={20} height={20} />
+                  <span>Setup in under 5 minutes</span>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Video Preview */}
-          <div className="mt-8 relative">
+          {/* Video Preview - Positioned to overlap */}
+          <div className="absolute bottom-[-200px] left-1/2 transform -translate-x-1/2 z-20" ref={videoContainerRef}>
             <div className="bg-white/10 backdrop-blur border border-[#f6f8ff] rounded-[37px] p-9 shadow-lg">
-              <div className="relative w-[692px] h-[556px] rounded-3xl overflow-hidden bg-white/20 backdrop-blur-sm">
-                <Image
-                  src="/video-thumbnail.jpg"
-                  alt="Sally in Action"
-                  fill
-                  className="object-cover"
+              <div className="relative w-[692px] h-[389px] rounded-3xl overflow-hidden bg-black group">
+                <iframe
+                  key={videoKey}
+                  ref={iframeRef}
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/bDnmG3njkNY?${
+                    isPlaying
+                      ? 'autoplay=1&mute=0&loop=0'
+                      : 'autoplay=1&mute=1&loop=1&playlist=bDnmG3njkNY'
+                  }&controls=1&rel=0&modestbranding=1`}
+                  title="Sally in Action"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
                 />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <button className="bg-[#432dd7]/70 backdrop-blur text-white px-10 py-6 rounded-full text-3xl font-medium hover:bg-[#432dd7]/80 transition-colors shadow-lg flex items-center gap-4">
-                    See Sally In Action
-                  </button>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M22.5 15L42.5 30L22.5 45V15Z" fill="white"/>
-                    </svg>
+                {!isPlaying && (
+                  <div
+                    className="absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer"
+                    onClick={handlePlayClick}
+                  >
+                    <Image
+                      src="/assets/Images/MartechLandingPage/abstract circle play.png"
+                      alt="Play"
+                      width={120}
+                      height={120}
+                      className="hover:scale-110 transition-transform"
+                    />
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </div>
+      {/* Add spacing for the overlapping video */}
+      <div className="h-[250px]"></div>
     </section>
   )
 }
