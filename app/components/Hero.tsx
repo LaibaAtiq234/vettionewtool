@@ -1,19 +1,22 @@
 'use client'
 
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
 const FeatureCard = ({
   icon,
   title,
-  isActive = false
+  isActive = false,
+  description
 }: {
-  icon: React.ReactNode
+  icon: string
   title: React.ReactNode
   isActive?: boolean
+  description?: React.ReactNode
 }) => {
   return (
     <div className={`
-      flex flex-col gap-6 px-6 py-8 rounded-2xl h-[204px] justify-center
+      flex flex-col gap-6 px-6 py-8 rounded-2xl h-[204px] justify-center relative
       ${isActive
         ? 'bg-white border-2 border-slate-200 shadow-[0px_4px_14px_0px_rgba(93,95,239,0.5)]'
         : 'bg-[#afaeff] border border-white shadow-[0px_10px_15px_0px_rgba(0,0,0,0.05)]'
@@ -24,19 +27,129 @@ const FeatureCard = ({
         ${isActive ? 'bg-white' : 'bg-[#7879f1]'}
         shadow-[0px_10px_15px_-3px_rgba(93,95,239,0.5)]
       `}>
-        {icon}
+        <Image src={icon} alt="" width={32} height={32} />
       </div>
       <div className={`
-        text-xl leading-5
-        ${isActive ? 'text-[#020618] font-normal' : 'text-[#314158] font-medium'}
+        ${isActive ? 'text-[#020618] font-normal text-center' : 'text-[#314158] font-medium'}
+        ${description ? '' : 'text-xl leading-5'}
       `}>
-        {title}
+        {description || title}
       </div>
     </div>
   )
 }
 
+const CardRow = ({ cards, activeIndex }: { cards: any[], activeIndex: number }) => {
+  return (
+    <div className="relative flex items-center" style={{ width: '696px', height: '204px' }}>
+      {cards.map((card, index) => (
+        <div
+          key={index}
+          className="absolute"
+          style={{
+            left: `${index * 140}px`,
+            zIndex: index,
+            width: '278px'
+          }}
+        >
+          <FeatureCard
+            icon={card.icon}
+            title={card.title}
+            isActive={index === activeIndex}
+            description={index === activeIndex ? card.description : undefined}
+          />
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function Hero() {
+  const [currentRow, setCurrentRow] = useState(0)
+
+  const cardRows = [
+    {
+      cards: [
+        { icon: '/medal-icon.png', title: <>Surfaces<br />Shortlist</>, description: null },
+        { icon: '/interview-icon.png', title: <>AI<br />Interviews</>, description: null },
+        { icon: '/cv-icon.png', title: <>Reads CVs<br />in seconds</>, description: null },
+        {
+          icon: '/linkedin-icon.png',
+          title: <>Easy<br />Apply</>,
+          description: (
+            <div className="text-xl leading-6">
+              Sally auto-imports all{' '}
+              <span className="font-bold">LinkedIn Easy Apply</span>{' '}
+              candidates
+            </div>
+          )
+        }
+      ],
+      activeIndex: 3
+    },
+    {
+      cards: [
+        { icon: '/linkedin-icon.png', title: <>Easy<br />Apply</>, description: null },
+        { icon: '/medal-icon.png', title: <>Surfaces<br />Shortlist</>, description: null },
+        { icon: '/interview-icon.png', title: <>AI<br />Interviews</>, description: null },
+        {
+          icon: '/cv-icon.png',
+          title: <>1000s of<br />CVs</>,
+          description: (
+            <div className="text-xl leading-6">
+              Sally reads every CV, even if you receive{' '}
+              <span className="font-bold">1000s of CVs</span>
+            </div>
+          )
+        }
+      ],
+      activeIndex: 3
+    },
+    {
+      cards: [
+        { icon: '/cv-icon.png', title: <>Reads CVs<br />in seconds</>, description: null },
+        { icon: '/linkedin-icon.png', title: <>Easy<br />Apply</>, description: null },
+        { icon: '/medal-icon.png', title: <>Surfaces<br />Shortlist</>, description: null },
+        {
+          icon: '/interview-icon.png',
+          title: <>AI<br />Interviews</>,
+          description: (
+            <div className="text-xl leading-6">
+              Sally <span className="font-bold">interviews</span>{' '}
+              candidates for deeper insights
+            </div>
+          )
+        }
+      ],
+      activeIndex: 3
+    },
+    {
+      cards: [
+        { icon: '/interview-icon.png', title: <>AI<br />Interviews</>, description: null },
+        { icon: '/cv-icon.png', title: <>1000s of<br />CVs</>, description: null },
+        { icon: '/linkedin-icon.png', title: <>Easy<br />Apply</>, description: null },
+        {
+          icon: '/medal-icon.png',
+          title: <>Surfaces<br />Shortlist</>,
+          description: (
+            <div className="text-xl leading-6">
+              Sally presents you with the{' '}
+              <span className="font-bold">best talent</span>
+            </div>
+          )
+        }
+      ],
+      activeIndex: 3
+    }
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRow((prev) => (prev + 1) % cardRows.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [cardRows.length])
+
   return (
     <section className="w-full px-20 py-8">
       <div className="max-w-[1297px] mx-auto rounded-[40px] bg-gradient-to-b from-[#d0cbfd] via-[#5d5fef] to-[#0a0449] relative overflow-hidden">
@@ -70,51 +183,8 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Feature Cards */}
-          <div className="flex gap-4 -mr-32">
-            <FeatureCard
-              icon={
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 4L20 12H28L21 17L24 26L16 20L8 26L11 17L4 12H12L16 4Z" fill="white"/>
-                </svg>
-              }
-              title={<>Surfaces<br />Shortlist</>}
-            />
-            <FeatureCard
-              icon={
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 8C12.69 8 10 10.69 10 14C10 17.31 12.69 20 16 20C19.31 20 22 17.31 22 14C22 10.69 19.31 8 16 8ZM16 18C13.79 18 12 16.21 12 14C12 11.79 13.79 10 16 10C18.21 10 20 11.79 20 14C20 16.21 18.21 18 16 18Z" fill="white"/>
-                  <path d="M16 22C11 22 6.9 24.86 6 28H26C25.1 24.86 21 22 16 22Z" fill="white"/>
-                </svg>
-              }
-              title={<>AI<br />Interviews</>}
-            />
-            <FeatureCard
-              icon={
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="6" y="8" width="20" height="16" rx="2" stroke="white" strokeWidth="2"/>
-                  <path d="M10 13H22M10 17H18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              }
-              title={<>Reads CVs<br />in seconds</>}
-            />
-            <FeatureCard
-              icon={
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M28 16C28 22.627 22.627 28 16 28C9.373 28 4 22.627 4 16C4 9.373 9.373 4 16 4C22.627 4 28 9.373 28 16Z" fill="#0077B5"/>
-                  <path d="M12 13H11V21H12V13Z" fill="white"/>
-                  <path d="M12.5 10C12.5 10.8284 11.8284 11.5 11 11.5C10.1716 11.5 9.5 10.8284 9.5 10C9.5 9.17157 10.1716 8.5 11 8.5C11.8284 8.5 12.5 9.17157 12.5 10Z" fill="white"/>
-                  <path d="M14 21H15V16.5C15 15.5 15.5 15 16.5 15C17.5 15 18 15.5 18 16.5V21H19V16C19 14.5 18 13 16 13C15 13 14.5 13.5 14 14V13H13V21H14Z" fill="white"/>
-                </svg>
-              }
-              title={
-                <>Sally auto-imports all <br />
-                <span className="font-bold">LinkedIn Easy Apply</span><br />
-                candidates</>
-              }
-              isActive={true}
-            />
-          </div>
+          {/* Feature Cards with Animation */}
+          <CardRow cards={cardRows[currentRow].cards} activeIndex={cardRows[currentRow].activeIndex} />
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 items-center">
