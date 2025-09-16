@@ -39,116 +39,156 @@ const FeatureCard = ({
   )
 }
 
-const CardRow = ({ cards, activeIndex }: { cards: any[], activeIndex: number }) => {
+const CardRow = ({ cards }: { cards: any[] }) => {
+  const [cardOrder, setCardOrder] = useState([0, 1, 2, 3])
+  const [animatingCard, setAnimatingCard] = useState<number | null>(null)
+  const [animationPhase, setAnimationPhase] = useState<'idle' | 'moving-down' | 'moving-left' | 'sliding-right'>('idle')
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentLast = cardOrder[3]
+      setAnimatingCard(currentLast)
+      setAnimationPhase('moving-down')
+
+      // Phase 1: Move down and behind
+      setTimeout(() => {
+        setAnimationPhase('moving-left')
+      }, 200)
+
+      // Phase 2: Start sliding other cards right while card moves left
+      setTimeout(() => {
+        setAnimationPhase('sliding-right')
+      }, 400)
+
+      // Phase 3: Update order
+      setTimeout(() => {
+        setCardOrder(prev => {
+          const newOrder = [...prev]
+          const last = newOrder.pop()!
+          newOrder.unshift(last)
+          return newOrder
+        })
+        setAnimatingCard(null)
+        setAnimationPhase('idle')
+      }, 1000)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [cardOrder])
+
   return (
-    <div className="relative flex items-center" style={{ width: '696px', height: '204px' }}>
-      {cards.map((card, index) => (
-        <div
-          key={index}
-          className="absolute"
-          style={{
-            left: `${index * 140}px`,
-            zIndex: index,
-            width: '278px'
-          }}
-        >
-          <FeatureCard
-            icon={card.icon}
-            title={card.title}
-            isActive={index === activeIndex}
-            description={index === activeIndex ? card.description : undefined}
-          />
-        </div>
-      ))}
+    <div className="relative flex items-center" style={{ width: '696px', height: '204px', perspective: '1000px' }}>
+      {cardOrder.map((originalIndex, currentPosition) => {
+        const card = cards[originalIndex]
+        const isActive = currentPosition === 3
+        const isMovingToBack = animatingCard === originalIndex
+
+        let left = `${currentPosition * 140}px`
+        let top = '0px'
+        let zIndex = currentPosition
+        let transform = 'none'
+        let opacity = 1
+        let transition = 'none'
+
+        if (isMovingToBack) {
+          if (animationPhase === 'moving-down') {
+            // Move down and scale slightly
+            left = `${currentPosition * 140}px`
+            top = '20px'
+            transform = 'scale(0.95)'
+            zIndex = -1
+            opacity = 0.9
+            transition = 'all 0.2s ease-out'
+          } else if (animationPhase === 'moving-left' || animationPhase === 'sliding-right') {
+            // Move left behind the cards
+            left = '-50px'
+            top = '20px'
+            transform = 'scale(0.95)'
+            zIndex = -1
+            opacity = 0.8
+            transition = 'all 0.6s ease-in-out'
+          }
+        } else if (animationPhase === 'sliding-right' && animatingCard !== null) {
+          // Other cards smoothly slide right
+          left = `${(currentPosition + 1) * 140}px`
+          zIndex = currentPosition + 1
+          transition = 'all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)'
+        } else {
+          // Default position
+          transition = 'none'
+        }
+
+        return (
+          <div
+            key={originalIndex}
+            className="absolute"
+            style={{
+              left,
+              top,
+              zIndex,
+              width: '278px',
+              transform,
+              opacity,
+              transition
+            }}
+          >
+            <FeatureCard
+              icon={card.icon}
+              title={card.title}
+              isActive={isActive}
+              description={isActive ? card.description : undefined}
+            />
+          </div>
+        )
+      })}
     </div>
   )
 }
 
 export default function Hero() {
-  const [currentRow, setCurrentRow] = useState(0)
-
-  const cardRows = [
+  const cards = [
     {
-      cards: [
-        { icon: '/medal-icon.png', title: <>Surfaces<br />Shortlist</>, description: null },
-        { icon: '/interview-icon.png', title: <>AI<br />Interviews</>, description: null },
-        { icon: '/cv-icon.png', title: <>Reads CVs<br />in seconds</>, description: null },
-        {
-          icon: '/linkedin-icon.png',
-          title: <>Easy<br />Apply</>,
-          description: (
-            <div className="text-xl leading-6">
-              Sally auto-imports all{' '}
-              <span className="font-bold">LinkedIn Easy Apply</span>{' '}
-              candidates
-            </div>
-          )
-        }
-      ],
-      activeIndex: 3
+      icon: '/medal-icon.png',
+      title: <>Surfaces<br />Shortlist</>,
+      description: (
+        <div className="text-xl leading-6">
+          Sally presents you with the{' '}
+          <span className="font-bold">best talent</span>
+        </div>
+      )
     },
     {
-      cards: [
-        { icon: '/linkedin-icon.png', title: <>Easy<br />Apply</>, description: null },
-        { icon: '/medal-icon.png', title: <>Surfaces<br />Shortlist</>, description: null },
-        { icon: '/interview-icon.png', title: <>AI<br />Interviews</>, description: null },
-        {
-          icon: '/cv-icon.png',
-          title: <>1000s of<br />CVs</>,
-          description: (
-            <div className="text-xl leading-6">
-              Sally reads every CV, even if you receive{' '}
-              <span className="font-bold">1000s of CVs</span>
-            </div>
-          )
-        }
-      ],
-      activeIndex: 3
+      icon: '/interview-icon.png',
+      title: <>AI<br />Interviews</>,
+      description: (
+        <div className="text-xl leading-6">
+          Sally <span className="font-bold">interviews</span>{' '}
+          candidates for deeper insights
+        </div>
+      )
     },
     {
-      cards: [
-        { icon: '/cv-icon.png', title: <>Reads CVs<br />in seconds</>, description: null },
-        { icon: '/linkedin-icon.png', title: <>Easy<br />Apply</>, description: null },
-        { icon: '/medal-icon.png', title: <>Surfaces<br />Shortlist</>, description: null },
-        {
-          icon: '/interview-icon.png',
-          title: <>AI<br />Interviews</>,
-          description: (
-            <div className="text-xl leading-6">
-              Sally <span className="font-bold">interviews</span>{' '}
-              candidates for deeper insights
-            </div>
-          )
-        }
-      ],
-      activeIndex: 3
+      icon: '/cv-icon.png',
+      title: <>Reads CVs<br />in seconds</>,
+      description: (
+        <div className="text-xl leading-6">
+          Sally reads every CV, even if you receive{' '}
+          <span className="font-bold">1000s of CVs</span>
+        </div>
+      )
     },
     {
-      cards: [
-        { icon: '/interview-icon.png', title: <>AI<br />Interviews</>, description: null },
-        { icon: '/cv-icon.png', title: <>1000s of<br />CVs</>, description: null },
-        { icon: '/linkedin-icon.png', title: <>Easy<br />Apply</>, description: null },
-        {
-          icon: '/medal-icon.png',
-          title: <>Surfaces<br />Shortlist</>,
-          description: (
-            <div className="text-xl leading-6">
-              Sally presents you with the{' '}
-              <span className="font-bold">best talent</span>
-            </div>
-          )
-        }
-      ],
-      activeIndex: 3
+      icon: '/linkedin-icon.png',
+      title: <>Easy<br />Apply</>,
+      description: (
+        <div className="text-xl leading-6">
+          Sally auto-imports all{' '}
+          <span className="font-bold">LinkedIn Easy Apply</span>{' '}
+          candidates
+        </div>
+      )
     }
   ]
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRow((prev) => (prev + 1) % cardRows.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [cardRows.length])
 
   return (
     <section className="w-full px-20 py-8">
@@ -184,7 +224,7 @@ export default function Hero() {
           </div>
 
           {/* Feature Cards with Animation */}
-          <CardRow cards={cardRows[currentRow].cards} activeIndex={cardRows[currentRow].activeIndex} />
+          <CardRow cards={cards} />
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 items-center">
