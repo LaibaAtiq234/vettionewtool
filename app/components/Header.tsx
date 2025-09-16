@@ -19,9 +19,13 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-1">
           <div className="bg-[#f6f8ff] border border-white rounded p-1.5">
-            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 0L12.4697 6.90983H19.5106L13.5204 11.1803L15.9901 18.0902L10 13.8197L4.00992 18.0902L6.47963 11.1803L0.489435 6.90983H7.53033L10 0Z" fill="#7879F1"/>
-            </svg>
+            <img
+              src="/assets/Images/MartechLandingPage/Frame 1984079718.svg"
+              alt="Vettio Logo"
+              width={20}
+              height={19}
+              className="block"
+            />
           </div>
           <span className="text-2xl font-medium text-[#020618]">Vettio</span>
         </Link>
