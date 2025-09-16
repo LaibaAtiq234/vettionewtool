@@ -256,10 +256,76 @@ export default function Hero() {
     <section className="w-full px-20 py-8">
       <div className="max-w-[1297px] mx-auto">
         <div className="rounded-[40px] bg-gradient-to-b from-[#d0cbfd] via-[#5d5fef] to-[#0a0449] relative overflow-visible">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-20 rounded-[40px] overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1/2 bg-[url('/grid-pattern.svg')] bg-repeat rotate-180" />
-            <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-[url('/grid-pattern.svg')] bg-repeat" />
+          {/* Perspective Grid Pattern */}
+          <div className="absolute inset-0 rounded-[40px] overflow-hidden opacity-15">
+            <svg
+              className="absolute inset-0 w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 1000 800"
+              preserveAspectRatio="xMidYMid slice"
+            >
+              {/* Define gradient masks for fading */}
+              <defs>
+                <radialGradient id="centerFade" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stopColor="white" stopOpacity="0" />
+                  <stop offset="20%" stopColor="white" stopOpacity="0.1" />
+                  <stop offset="40%" stopColor="white" stopOpacity="0.3" />
+                  <stop offset="70%" stopColor="white" stopOpacity="0.5" />
+                  <stop offset="100%" stopColor="white" stopOpacity="0.6" />
+                </radialGradient>
+                <linearGradient id="edgeFade" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="white" stopOpacity="0" />
+                  <stop offset="5%" stopColor="white" stopOpacity="0.2" />
+                  <stop offset="20%" stopColor="white" stopOpacity="0.5" />
+                  <stop offset="80%" stopColor="white" stopOpacity="0.5" />
+                  <stop offset="95%" stopColor="white" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="white" stopOpacity="0" />
+                </linearGradient>
+                <mask id="gridMask">
+                  <rect x="0" y="0" width="1000" height="800" fill="url(#centerFade)" />
+                  <rect x="0" y="0" width="1000" height="800" fill="url(#edgeFade)" />
+                </mask>
+              </defs>
+
+              <g mask="url(#gridMask)">
+              {/* Horizontal lines - denser at center */}
+              {[...Array(25)].map((_, i) => {
+                const factor = (i - 12.5) / 12.5;
+                const y = 400 + factor * 400 * Math.sign(factor) * Math.sqrt(Math.abs(factor));
+                return (
+                  <line
+                    key={`h-${i}`}
+                    x1="0"
+                    y1={y}
+                    x2="1000"
+                    y2={y}
+                    stroke="rgba(255,255,255,0.9)"
+                    strokeWidth="0.8"
+                  />
+                );
+              })}
+
+              {/* Vertical lines - converging from edges to center */}
+              {[...Array(40)].map((_, i) => {
+                const factor = (i - 20) / 20;
+                // Spread lines more evenly across the width
+                const xBottom = 500 + factor * 600; // Wider spread at bottom
+                const xTop = 500 + (xBottom - 500) * 0.2; // Lines converge at top (horizon)
+
+                return (
+                  <line
+                    key={`v-${i}`}
+                    x1={xTop}
+                    y1="0"
+                    x2={xBottom}
+                    y2="800"
+                    stroke="rgba(255,255,255,0.9)"
+                    strokeWidth="0.8"
+                  />
+                );
+              })}
+              </g>
+            </svg>
           </div>
 
           {/* Content */}
@@ -335,7 +401,7 @@ export default function Hero() {
                 />
                 {!isPlaying && (
                   <div
-                    className="absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer"
+                    className="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-black/20 cursor-pointer"
                     onClick={handlePlayClick}
                   >
                     <Image
@@ -345,6 +411,9 @@ export default function Hero() {
                       height={120}
                       className="hover:scale-110 transition-transform"
                     />
+                    <button className="bg-[rgba(120,100,240,0.7)] backdrop-blur px-5 py-3 rounded-full shadow-[0px_4px_12px_0px_rgba(93,95,239,0.2)] hover:bg-[rgba(120,100,240,0.8)] transition-colors">
+                      <span className="text-white text-[24px] font-medium">See Sally In Action</span>
+                    </button>
                   </div>
                 )}
               </div>
