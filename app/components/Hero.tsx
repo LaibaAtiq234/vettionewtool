@@ -259,25 +259,17 @@ export default function Hero() {
                 Get Started For Free
               </button>
               <button className="px-6 py-2 bg-slate-100 text-[#0f172b] font-medium text-sm rounded-lg flex items-center gap-2 hover:bg-slate-200 transition-colors">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 6L14 10L8 14V6Z" fill="#0f172b"/>
-                </svg>
+                <Image src="assets/Images/MartechLandingPage/play.svg" alt="Play" width={20} height={20} />
                 Book a Demo
               </button>
             </div>
             <div className="flex gap-8 text-sm text-slate-100">
               <div className="flex items-center gap-1">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="7" stroke="#f6f8ff" strokeWidth="2"/>
-                  <path d="M7 10L9 12L13 8" stroke="#f6f8ff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <Image src="assets/Images/MartechLandingPage/check-circle-one.svg" alt="Check" width={20} height={20} />
                 <span>No credit card required</span>
               </div>
               <div className="flex items-center gap-1">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="10" cy="10" r="7" stroke="#f6f8ff" strokeWidth="2"/>
-                  <path d="M10 6V10L13 13" stroke="#f6f8ff" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
+                <Image src="assets/Images/MartechLandingPage/mingcute_time-line.svg" alt="Time" width={20} height={20} />
                 <span>Setup in under 5 minutes</span>
               </div>
             </div>
