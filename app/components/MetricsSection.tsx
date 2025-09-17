@@ -1,9 +1,8 @@
 import React from 'react';
-import { web_assets } from "@/utils/constants";
 // Image assets/Images
-const recruiterIcon =web_assets+ "MartechlandingPage/5d93bfcdf192a86284932d3b1fc9fd1a8b95e5f7.svg";
-const clockIcon =web_assets+ "MartechlandingPage/375978c023db0b7e5064f3893035981baab92069.svg";
-const targetIcon =web_assets+ "MartechlandingPage/ebc79f193ab6b60329bb283994b4db4c906b0f63.svg";
+const recruiterIcon ="assets/Images/MartechlandingPage/5d93bfcdf192a86284932d3b1fc9fd1a8b95e5f7.svg";
+const clockIcon ="assets/Images/MartechlandingPage/375978c023db0b7e5064f3893035981baab92069.svg";
+const targetIcon ="assets/Images/MartechlandingPage/ebc79f193ab6b60329bb283994b4db4c906b0f63.svg";
 
 const metrics = [
   {
@@ -44,7 +43,12 @@ export default function MetricsSection() {
             >
               {/* Icon */}
               <div className="w-10 md:w-11 lg:w-12 h-7 md:h-8 lg:h-9 mb-2">
-                <img src={metric.icon} alt="" className="w-full h-full" />
+                <img
+                  src={metric.icon}
+                  alt=""
+                  className="w-full h-full filter brightness-0 saturate-100"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(2234%) hue-rotate(237deg) brightness(104%) contrast(101%)' }}
+                />
               </div>
               
               {/* Value */}

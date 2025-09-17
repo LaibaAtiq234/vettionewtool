@@ -1,10 +1,9 @@
 'use client';
-import { web_assets } from "@/utils/constants";
 import React, { useState } from 'react';
 
 // Image assets/Images
-const searchIcon = web_assets + "MartechlandingPage/037d414327aa68686a4c4df5147ba311fcc040dd.svg";
-const chevronIcon = web_assets + "MartechlandingPage/2ab2372e12628c438a2409ea3192f8a8b1b2c8ac.svg";
+const searchIcon = "assets/Images/MartechlandingPage/037d414327aa68686a4c4df5147ba311fcc040dd.svg";
+const chevronIcon = "assets/Images/MartechlandingPage/2ab2372e12628c438a2409ea3192f8a8b1b2c8ac.svg";
 
 const faqData = [
   {

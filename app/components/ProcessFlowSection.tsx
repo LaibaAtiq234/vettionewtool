@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useState, useEffect, useRef } from 'react';
-import { web_assets } from "@/utils/constants";
+import Image from 'next/image';
 // Image assets/Images
-const ctaBackground =web_assets+ "MartechlandingPage/1c24b88ad19d9bf4e4f6427d50954d183e3108a5.png";
-const lineGlow =web_assets+ "MartechlandingPage/320d00398837778306f2675a184c64ae2da92535.png";
-const timeIcon =web_assets+ "MartechlandingPage/d274a7c3f704dc5c7b13d4bf06af4bdeea37fc20.svg";
-const processingIcon =web_assets+ "MartechlandingPage/5f981017fac4fa217411e55eae73f49b426fa94d.svg";
+const ctaBackground ="assets/Images/MartechlandingPage/1c24b88ad19d9bf4e4f6427d50954d183e3108a5.png";
+const lineGlow ="assets/Images/MartechlandingPage/320d00398837778306f2675a184c64ae2da92535.png";
+const timeIcon ="assets/Images/MartechlandingPage/d274a7c3f704dc5c7b13d4bf06af4bdeea37fc20.svg";
+const processingIcon ="assets/Images/MartechlandingPage/5f981017fac4fa217411e55eae73f49b426fa94d.svg";
 
 export default function ProcessFlowSection() {
   const [activeStep, setActiveStep] = useState(0);
@@ -93,7 +95,7 @@ export default function ProcessFlowSection() {
     return () => clearInterval(interval);
   }, [activeStep, isVisible, processSteps.length]);
   return (
-    <section ref={sectionRef} className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-50">
+    <section ref={sectionRef} className="py-12 md:py-16 lg:py-20 px-4 md:px-6" style={{ backgroundColor: 'rgba(165, 166, 246, 0.12)' }}>
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
           {/* Left Content */}
@@ -106,42 +108,75 @@ export default function ProcessFlowSection() {
               See how Sally captures every Easy Apply candidate, conducts AI interviews automatically, and delivers a perfect shortlist — all in real time.
             </p>
 
-            {/* CTA Button */}
-            <a 
-              href="https://partner.vettio.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative w-full sm:w-[215.04px] h-12 md:h-14 rounded-[10.747px] bg-[#7879f1] shadow-[0px_13.434px_62.634px_0px_rgba(120,121,241,0.2)] overflow-hidden mb-4 md:mb-6 group hover:bg-[#6869e0] transition-colors inline-flex items-center justify-center">
-              <div 
-                className="absolute inset-0 bg-[57.27%_50%] bg-no-repeat mix-blend-hard-light rounded-[11.2px]"
-                style={{ 
-                  backgroundImage: `url('${ctaBackground}')`,
-                  backgroundSize: '107.33% 101.13%'
-                }}
-              />
-              <div className="absolute bottom-0.5 left-3.5 right-3.5 sm:w-[187.04px] h-[2.24px]">
-                <div 
-                  className="absolute inset-0 blur-[1px] rounded-[2.24px] overflow-hidden"
-                  style={{ 
-                    backgroundImage: `url('${lineGlow}')`, 
-                    backgroundSize: '100% 896%', 
-                    backgroundPosition: '0% 53.14%' 
+            {/* CTA Buttons */}
+            <div className="flex gap-4 mb-4 md:mb-6">
+              <a
+                href="https://partner.vettio.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-full sm:w-[215.04px] h-12 md:h-14 rounded-[10.747px] bg-[#7879f1] shadow-[0px_13.434px_62.634px_0px_rgba(120,121,241,0.2)] overflow-hidden group hover:bg-[#6869e0] transition-colors inline-flex items-center justify-center">
+                <div
+                  className="absolute inset-0 bg-[57.27%_50%] bg-no-repeat mix-blend-hard-light rounded-[11.2px]"
+                  style={{
+                    backgroundImage: `url('${ctaBackground}')`,
+                    backgroundSize: '107.33% 101.13%'
                   }}
                 />
-              </div>
-              <button className="relative font-['Inter',_sans-serif] font-bold text-[14px] md:text-[16px] text-white">
-                Get Started Free
-              </button>
-            </a>
+                <div className="absolute bottom-0.5 left-3.5 right-3.5 sm:w-[187.04px] h-[2.24px]">
+                  <div
+                    className="absolute inset-0 blur-[1px] rounded-[2.24px] overflow-hidden"
+                    style={{
+                      backgroundImage: `url('${lineGlow}')`,
+                      backgroundSize: '100% 896%',
+                      backgroundPosition: '0% 53.14%'
+                    }}
+                  />
+                </div>
+                <button className="relative font-['Inter',_sans-serif] font-bold text-[14px] md:text-[16px] text-white">
+                  Get Started For Free
+                </button>
+              </a>
+
+              <a
+                href="https://calendly.com/vettio/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-[215.04px] h-12 md:h-14 bg-white border-2 border-[#7879f1] text-[#7879f1] font-bold rounded-[10.747px] hover:bg-[#f6f8ff] transition-colors inline-flex items-center justify-center gap-2 font-['Inter',_sans-serif] text-[14px] md:text-[16px]"
+              >
+                <Image
+                  src="/assets/Images/MartechLandingPage/play.svg"
+                  alt="Play"
+                  width={20}
+                  height={20}
+                  className="filter brightness-0 saturate-100"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(2234%) hue-rotate(237deg) brightness(104%) contrast(101%)' }}
+                />
+                Book a Demo
+              </a>
+            </div>
 
             {/* Trust Badges */}
             <div className="flex flex-col sm:flex-row gap-2 md:gap-4 lg:gap-6 items-start sm:items-center">
-              <p className="font-['Inter',_sans-serif] text-[12px] md:text-[14px]">
-                <span className="font-bold text-[#14ae5c] text-[14px] md:text-[16px]">✓ </span>
-                <span className="text-[#1e1e1e]">No credit card required</span>
-              </p>
+              <div className="flex items-center gap-2">
+                <div className="relative w-5 h-5">
+                  <Image
+                    src="/assets/Images/MartechLandingPage/check-circle-one.svg"
+                    alt="Check"
+                    width={20}
+                    height={20}
+                    className="filter brightness-0 saturate-100"
+                    style={{ filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(2234%) hue-rotate(237deg) brightness(104%) contrast(101%)' }}
+                  />
+                </div>
+                <span className="font-['Inter',_sans-serif] text-[#1e1e1e] text-[12px] md:text-[14px]">No credit card required</span>
+              </div>
               <div className="flex gap-1.5 items-center">
-                <img src={timeIcon} alt="" className="w-[15px] md:w-[17px] h-[15px] md:h-[17px]" />
+                <img
+                  src={timeIcon}
+                  alt=""
+                  className="w-[15px] md:w-[17px] h-[15px] md:h-[17px] filter brightness-0 saturate-100"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(31%) sepia(98%) saturate(2234%) hue-rotate(237deg) brightness(104%) contrast(101%)' }}
+                />
                 <p className="font-['Inter',_sans-serif] text-[#1e1e1e] text-[12px] md:text-[14px]">
                   Setup in under 5 minutes
                 </p>

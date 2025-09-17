@@ -9,6 +9,10 @@ import WhyLoveSally from "./components/WhyLoveSally";
 import WhySwitchToSally from "./components/WhySwitchToSally";
 import TestimonialsSection from "./components/TestimonialsSection";
 import SecurityPrivacySection from "./components/SecurityPrivacySection";
+import MetricsSection from "./components/MetricsSection";
+import ProcessFlowSection from "./components/ProcessFlowSection";
+import FAQSection from "./components/FAQSection";
+import FooterSection from "./components/FooterSection";
 
 export default function Home() {
   return (
@@ -24,6 +28,10 @@ export default function Home() {
       <WhySwitchToSally />
       <TestimonialsSection />
       <SecurityPrivacySection/>
+      <MetricsSection />
+      <ProcessFlowSection />
+      <FAQSection />
+      <FooterSection />
     </div>
   );
 }
