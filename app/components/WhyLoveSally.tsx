@@ -1,8 +1,39 @@
 'use client'
 
 import Image from 'next/image'
+import { useEffect, useState, useRef } from 'react'
 
 export default function WhyLoveSally() {
+  const [showBadges, setShowBadges] = useState(false)
+  const badgeSectionRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Start animation when section is in view
+            setTimeout(() => {
+              setShowBadges(true)
+            }, 200)
+          }
+        })
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the element is visible
+      }
+    )
+
+    if (badgeSectionRef.current) {
+      observer.observe(badgeSectionRef.current)
+    }
+
+    return () => {
+      if (badgeSectionRef.current) {
+        observer.unobserve(badgeSectionRef.current)
+      }
+    }
+  }, [])
   return (
     <section className="w-full py-20 bg-white">
       <div className="max-w-7xl mx-auto px-10">
@@ -91,39 +122,42 @@ export default function WhyLoveSally() {
                 {/* Features List */}
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-2">
-                    <Image
-                      src="/assets/Images/MartechLandingPage/interview-icon.png"
-                      alt="Interview"
-                      width={24}
-                      height={24}
-                      className="flex-shrink-0"
-                    />
+                    <div className="relative w-6 h-6 flex-shrink-0">
+                      <Image
+                        src="/assets/Images/MartechLandingPage/interview-icon.png"
+                        alt="Interview"
+                        fill
+                        className="brightness-0 invert"
+                      />
+                    </div>
                     <p className="text-base">Conducts thousands of interviews simultaneously</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Image
-                      src="/assets/Images/MartechLandingPage/job-icon.png"
-                      alt="Job"
-                      width={24}
-                      height={24}
-                      className="flex-shrink-0"
-                    />
+                    <div className="relative w-6 h-6 flex-shrink-0">
+                      <Image
+                        src="/assets/Images/MartechLandingPage/job-icon.png"
+                        alt="Job"
+                        fill
+                        className="brightness-0 invert"
+                      />
+                    </div>
                     <p className="text-base">Tailors every interview to your specific job requirements</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Image
-                      src="/assets/Images/MartechLandingPage/replace-icon.png"
-                      alt="Replace"
-                      width={24}
-                      height={24}
-                      className="flex-shrink-0"
-                    />
+                    <div className="relative w-6 h-6 flex-shrink-0">
+                      <Image
+                        src="/assets/Images/MartechLandingPage/replace-icon.png"
+                        alt="Replace"
+                        fill
+                        className="brightness-0 invert"
+                      />
+                    </div>
                     <p className="text-base">Understands responses and asks smart, relevant follow-ups</p>
                   </div>
                 </div>
 
                 {/* Interview Preview Window */}
-                <div className="relative">
+                <div className="relative" ref={badgeSectionRef}>
                   <div className="rounded-[24px] border-[14px] border-white/30 overflow-hidden shadow-2xl bg-white">
                     {/* Browser Header */}
                     <div className="bg-white">
@@ -190,57 +224,91 @@ export default function WhyLoveSally() {
                     </div>
                   </div>
 
-                  {/* Floating Badges - positioned outside the card */}
-                  {/* Domain Badge - top right */}
-                  <div className="absolute -top-4 -right-10 z-10">
-                    <div className="bg-black/90 backdrop-blur-lg text-white rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl">
-                      <div className="bg-[#7879f1] p-2 rounded-xl">
-                        <Image
-                          src="/assets/Images/MartechLandingPage/focus-icon.png"
-                          alt="Domain"
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                      <div>
-                        <p className="font-bold text-sm">Domain</p>
-                        <p className="text-sm opacity-90">Software Engineering</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Focus Area Badge - middle right */}
-                  <div className="absolute top-20 -right-16 z-10">
-                    <div className="bg-[#7879f1] text-white rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl">
-                      <div className="bg-white/20 p-2 rounded-xl">
-                        <Image
-                          src="/assets/Images/MartechLandingPage/focus-area-icon.png"
-                          alt="Focus Area"
-                          width={24}
-                          height={24}
-                        />
-                      </div>
-                      <div>
-                        <p className="font-bold text-sm">Focus Area</p>
-                        <p className="text-sm opacity-90">Backend Development</p>
+                  {/* Floating Badges Container - positioned outside the card */}
+                  <div className="absolute -right-8 top-0 z-10 flex flex-col gap-3">
+                    {/* Domain Badge - overlapping top right corner */}
+                    <div
+                      className={`transition-all duration-500 transform ${
+                        showBadges
+                          ? 'opacity-100 translate-x-0'
+                          : 'opacity-0 translate-x-10'
+                      }`}
+                      style={{
+                        transitionDelay: '0ms',
+                        marginTop: '-10px'
+                      }}
+                    >
+                      <div className="bg-black/90 backdrop-blur-lg text-white rounded-tl-[17px] rounded-tr-[17px] rounded-bl-[17px] px-3 py-2.5 flex items-center gap-2.5 shadow-xl">
+                        <div className="bg-[#7879f1] p-1.5 rounded-xl flex-shrink-0">
+                          <div className="relative w-[22px] h-[22px]">
+                            <Image
+                              src="/assets/Images/MartechLandingPage/focus-icon.png"
+                              alt="Domain"
+                              fill
+                              className="brightness-0 invert"
+                            />
+                          </div>
+                        </div>
+                        <div className="pr-2">
+                          <p className="font-bold text-sm">Domain</p>
+                          <p className="text-xs opacity-90">Software Engineering</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Assessing Badge - bottom right */}
-                  <div className="absolute bottom-20 -right-20 z-10">
-                    <div className="bg-[#7879f1] text-white rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl">
-                      <div className="bg-white/20 p-2 rounded-xl">
-                        <Image
-                          src="/assets/Images/MartechLandingPage/assessing-icon.png"
-                          alt="Assessing"
-                          width={24}
-                          height={24}
-                        />
+                    {/* Focus Area Badge - middle */}
+                    <div
+                      className={`transition-all duration-500 transform ml-8 ${
+                        showBadges
+                          ? 'opacity-100 translate-x-0'
+                          : 'opacity-0 translate-x-10'
+                      }`}
+                      style={{
+                        transitionDelay: '400ms'
+                      }}
+                    >
+                      <div className="bg-[#7879f1] text-white rounded-tl-[17px] rounded-tr-[17px] rounded-bl-[17px] px-3 py-2.5 flex items-center gap-2.5 shadow-xl">
+                        <div className="bg-white/20 p-1.5 rounded-xl flex-shrink-0">
+                          <div className="relative w-[22px] h-[22px]">
+                            <Image
+                              src="/assets/Images/MartechLandingPage/focus-area-icon.png"
+                              alt="Focus Area"
+                              fill
+                              className="brightness-0 invert"
+                            />
+                          </div>
+                        </div>
+                        <div className="pr-2">
+                          <p className="font-bold text-sm">Focus Area</p>
+                          <p className="text-xs opacity-90 whitespace-nowrap">Backend Development</p>
+                        </div>
                       </div>
-                      <div className="max-w-[180px]">
-                        <p className="font-bold text-sm">Assessing</p>
-                        <p className="text-sm opacity-90 leading-tight">API Design, Data Structures & Algorithms</p>
+                    </div>
+
+                    {/* Assessing Badge - bottom */}
+                    <div
+                      className={`transition-all duration-500 transform ml-16 ${
+                        showBadges
+                          ? 'opacity-100 translate-x-0'
+                          : 'opacity-0 translate-x-10'
+                      }`}
+                      style={{
+                        transitionDelay: '800ms'
+                      }}
+                    >
+                      <div className="bg-[#7879f1] text-white rounded-tl-[17px] rounded-tr-[17px] rounded-bl-[17px] px-3 py-2.5 flex items-center gap-2.5 shadow-xl">
+                        <div className="bg-white/20 p-1.5 rounded-xl flex-shrink-0">
+                          <Image
+                            src="/assets/Images/MartechLandingPage/assessing-icon.png"
+                            alt="Assessing"
+                            width={22}
+                            height={22}
+                          />
+                        </div>
+                        <div className="pr-2">
+                          <p className="font-bold text-sm">Assessing</p>
+                          <p className="text-xs opacity-90 leading-tight max-w-[140px]">API Design, Data Structures & Algorithms</p>
+                        </div>
                       </div>
                     </div>
                   </div>
