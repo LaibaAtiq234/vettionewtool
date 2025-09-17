@@ -8,9 +8,39 @@ const BeforeAfterComparison = () => {
   const [beforeSallyVisible, setBeforeSallyVisible] = useState<number[]>([]);
   const [afterSallyVisible, setAfterSallyVisible] = useState<number[]>([]);
   const [badgesVisible, setBadgesVisible] = useState<number[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // If mobile, show all items immediately
+    if (window.innerWidth < 768) {
+      setBeforeSallyVisible([1, 2, 3, 4, 5, 6]);
+      setAfterSallyVisible([1, 2, 3, 4, 5, 6]);
+      setBadgesVisible([1, 2, 3, 4]);
+    }
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Only run animation on desktop
+    if (isMobile) {
+      setBeforeSallyVisible([1, 2, 3, 4, 5, 6]);
+      setAfterSallyVisible([1, 2, 3, 4, 5, 6]);
+      setBadgesVisible([1, 2, 3, 4]);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -68,7 +98,7 @@ const BeforeAfterComparison = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section ref={sectionRef} className="pt-12 md:pt-16 pb-6 md:pb-8 px-4 md:px-8 overflow-hidden relative">
