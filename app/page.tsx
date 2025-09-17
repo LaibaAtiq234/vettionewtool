@@ -6,6 +6,9 @@ import CVCalculator from "./components/CVCalculator";
 import BeforeAfterComparison from "./components/BeforeAfterComparison";
 import HowSallyWorks from "./components/HowSallyWorks";
 import WhyLoveSally from "./components/WhyLoveSally";
+import WhySwitchToSally from "./components/WhySwitchToSally";
+import TestimonialsSection from "./components/TestimonialsSection";
+import SecurityPrivacySection from "./components/SecurityPrivacySection";
 
 export default function Home() {
   return (
@@ -17,7 +20,10 @@ export default function Home() {
       <CVCalculator />
       <HowSallyWorks />
       <WhyLoveSally />
-            <BeforeAfterComparison />
+      <BeforeAfterComparison />
+      <WhySwitchToSally />
+      <TestimonialsSection />
+      <SecurityPrivacySection/>
     </div>
   );
 }
