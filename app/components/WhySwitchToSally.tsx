@@ -29,11 +29,11 @@ const WhySwitchToSally = () => {
           </p>
         </div>
 
-        {/* Comparison Table */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center overflow-x-auto">
+        {/* Comparison Table - Desktop layout */}
+        <div className="hidden lg:flex flex-row gap-8 justify-center">
           {/* Features Column */}
-          <div className="flex flex-col gap-4 md:gap-6 min-w-0 lg:min-w-fit">
-            <div className="bg-[#7879f1] px-4 md:px-6 py-1.5 rounded-full flex items-center gap-2 self-start text-sm md:text-base">
+          <div className="flex flex-col gap-6">
+            <div className="bg-[#7879f1] px-6 py-1.5 rounded-full flex items-center gap-2 self-start">
               <Image
                 src="/assets/Images/MartechLandingPage/switchtosallyvector.svg"
                 alt="Features"
@@ -188,15 +188,103 @@ const WhySwitchToSally = () => {
           </div>
         </div>
 
+        {/* Mobile Table Layout */}
+        <div className="lg:hidden">
+          {/* Table Headers */}
+          <div className="grid grid-cols-3 gap-2 mb-4 px-2">
+            <div className="text-center">
+              <div className="bg-[#7879f1] px-2 py-1 rounded-full inline-flex items-center gap-1">
+                <Image
+                  src="/assets/Images/MartechLandingPage/switchtosallyvector.svg"
+                  alt="Features"
+                  width={12}
+                  height={12}
+                />
+                <span className="text-xs font-medium text-[#f6f8ff]">Features</span>
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1">
+                <Image
+                  src="/assets/Images/MartechLandingPage/sally-logo.svg"
+                  alt="Sally"
+                  width={20}
+                  height={20}
+                />
+                <span className="text-xs font-bold text-[#5d5fef]">Sally</span>
+              </div>
+            </div>
+            <div className="text-center">
+              <span className="text-xs font-medium text-gray-900">Traditional</span>
+            </div>
+          </div>
+
+          {/* Table Rows */}
+          <div className="space-y-2">
+            {features.map((feature, index) => {
+              const sallyValues = [
+                <CheckIcon color="#5d5fef" size={16} />,
+                <CheckIcon color="#5d5fef" size={16} />,
+                <CheckIcon color="#5d5fef" size={16} />,
+                <CheckIcon color="#5d5fef" size={16} />,
+                <CheckIcon color="#5d5fef" size={16} />,
+                "5 min",
+                "Free",
+                "Seamless"
+              ];
+
+              const traditionalValues = [
+                <XIcon color="#62748e" size={16} />,
+                <XIcon color="#62748e" size={16} />,
+                <XIcon color="#62748e" size={16} />,
+                <XIcon color="#62748e" size={16} />,
+                <XIcon color="#62748e" size={16} />,
+                "Days",
+                "$15k+",
+                "Complex"
+              ];
+
+              return (
+                <div key={index} className="bg-white rounded-lg border border-gray-200 p-3">
+                  <div className="grid grid-cols-3 gap-2 items-center">
+                    <div className="text-xs font-medium text-gray-900">
+                      {feature.text}
+                      {feature.isNew && (
+                        <span className="ml-1 text-[10px] text-[#5d5fef] bg-[#f6f8ff] px-1.5 py-0.5 rounded-full">
+                          New
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex justify-center">
+                      {typeof sallyValues[index] === 'string' ? (
+                        <span className="text-xs font-medium text-[#5d5fef]">{sallyValues[index]}</span>
+                      ) : (
+                        sallyValues[index]
+                      )}
+                    </div>
+                    <div className="flex justify-center">
+                      {typeof traditionalValues[index] === 'string' ? (
+                        <span className="text-xs font-medium text-[#62748e]">{traditionalValues[index]}</span>
+                      ) : (
+                        traditionalValues[index]
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* CTA Section */}
-        <div className="mt-14 flex flex-col items-center gap-3">
-          <button className="bg-[#7879f1] hover:bg-[#6668e3] text-white font-bold px-8 py-3 rounded-xl transition-colors">
+        <div className="mt-8 md:mt-14 flex flex-col items-center gap-3">
+          <button className="bg-[#7879f1] hover:bg-[#6668e3] text-white font-bold px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base rounded-xl transition-colors">
             Get Started For Free
           </button>
 
-          <div className="flex items-center gap-6 text-sm text-gray-600">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs md:text-sm text-gray-600">
             <div className="flex items-center gap-2">
-              <div className="relative w-5 h-5">
+              <div className="relative w-4 h-4 md:w-5 md:h-5">
                 <Image
                   src="/assets/Images/MartechLandingPage/check-circle-one.svg"
                   alt="Check"
@@ -209,7 +297,7 @@ const WhySwitchToSally = () => {
               <span>No credit card required</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="relative w-5 h-5">
+              <div className="relative w-4 h-4 md:w-5 md:h-5">
                 <Image
                   src="/assets/Images/MartechLandingPage/mingcute_time-line.svg"
                   alt="Time"

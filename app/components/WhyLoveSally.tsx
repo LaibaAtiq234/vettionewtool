@@ -459,8 +459,8 @@ export default function WhyLoveSally() {
                         </div>
                       </div>
 
-                      {/* Sandra Card */}
-                      <div className="flex flex-col items-center gap-2 relative">
+                      {/* Sandra Card - Hidden on mobile */}
+                      <div className="hidden sm:flex flex-col items-center gap-2 relative">
                         <div className="relative">
                           <Image
                             src="/assets/Images/MartechLandingPage/candidate-sandra.png"
@@ -494,8 +494,8 @@ export default function WhyLoveSally() {
                         </div>
                       </div>
 
-                      {/* Pierre Card (small) */}
-                      <div className="flex flex-col items-center gap-2 relative">
+                      {/* Pierre Card (small) - Hidden on mobile */}
+                      <div className="hidden sm:flex flex-col items-center gap-2 relative">
                         <div className="relative">
                           <Image
                             src="/assets/Images/MartechLandingPage/candidate-pierre-1.png"
