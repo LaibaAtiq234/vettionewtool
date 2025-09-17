@@ -77,9 +77,9 @@ const BeforeAfterComparison = () => {
             </div>
 
             {/* Floating badges over the glass sphere */}
-            <div className={`absolute right-[15%] top-[20%] space-y-3 z-10 transition-all duration-1000 ${showFloatingBadges ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`absolute right-[3%] top-[20%] space-y-5 z-10 transition-all duration-1000 ${showFloatingBadges ? 'opacity-100' : 'opacity-0'}`}>
               {/* Badge 1 - Purple/Blue */}
-              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
+              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 ml-16 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '100ms' }}>
                 <div className="bg-[rgba(165,166,246,0.6)] rounded-full p-1 flex-shrink-0">
                   <Image
@@ -118,7 +118,7 @@ const BeforeAfterComparison = () => {
               </div>
 
               {/* Badge 4 - Light Indigo */}
-              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
+              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 ml-12 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '400ms' }}>
                 <div className="bg-[#7879f1] rounded-full p-1 flex-shrink-0">
                   <Image src="/assets/Images/MartechLandingPage/check-circle-one.svg" alt="" width={14} height={14} />
