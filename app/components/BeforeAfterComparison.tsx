@@ -84,6 +84,9 @@ const BeforeAfterComparison = () => {
         />
       </div>
 
+      {/* Top purple gradient overlay */}
+      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-[#7879f1]/15 via-[#5d5fef]/5 to-transparent pointer-events-none z-0"></div>
+
       <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
           From CV Chaos to Qualified Shortlists in Minutes

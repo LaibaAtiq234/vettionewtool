@@ -253,8 +253,11 @@ export default function Hero() {
   ]
 
   return (
-    <section className="w-full px-20 py-8">
-      <div className="max-w-[1297px] mx-auto">
+    <section className="w-full px-20 py-8 relative">
+      {/* Top purple gradient overlay */}
+      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-[#7879f1]/15 via-[#5d5fef]/5 to-transparent pointer-events-none z-0"></div>
+
+      <div className="max-w-[1297px] mx-auto relative z-10">
         <div className="rounded-[40px] bg-gradient-to-b from-[#d0cbfd] via-[#5d5fef] to-[#0a0449] relative overflow-visible">
           {/* Perspective Grid Pattern */}
           <div className="absolute inset-0 rounded-[40px] overflow-hidden opacity-15">
