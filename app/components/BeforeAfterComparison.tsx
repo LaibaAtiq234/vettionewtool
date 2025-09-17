@@ -71,8 +71,20 @@ const BeforeAfterComparison = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="pt-16 pb-8 px-4 md:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section ref={sectionRef} className="pt-16 pb-8 px-4 md:px-8 overflow-hidden relative">
+      {/* Background pattern */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Image
+          src="/assets/Images/MartechLandingPage/before-after-bg.svg"
+          alt=""
+          fill
+          className="object-cover opacity-100"
+          style={{ filter: 'brightness(0.3) contrast(1.5) saturate(1.2)' }}
+          priority
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
           From CV Chaos to Qualified Shortlists in Minutes
         </h2>
