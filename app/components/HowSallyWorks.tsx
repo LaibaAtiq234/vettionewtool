@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function HowSallyWorks() {
   const [percentage, setPercentage] = useState(0)
@@ -62,7 +63,7 @@ export default function HowSallyWorks() {
               <div
                 className="absolute inset-0 opacity-40 rounded-xl"
                 style={{
-                  backgroundImage: `url('/assets/Images/MartechLandingPage/HowSallyWorks/step2-bg.png')`,
+                  backgroundImage: `url('/assets/Images/MartechLandingPage/step2-bg.png')`,
                   backgroundSize: '77.92% 100%',
                   backgroundPosition: 'center top',
                   backgroundRepeat: 'no-repeat'
@@ -185,25 +186,17 @@ export default function HowSallyWorks() {
               Get Started For Free
             </button>
             <button className="bg-white/10 backdrop-blur border border-white/20 text-white px-6 py-3 rounded-lg font-medium text-sm hover:bg-white/20 transition-colors flex items-center gap-2">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 6.5L13.5 10L8 13.5V6.5Z" fill="currentColor"/>
-              </svg>
+              <Image src="/assets/Images/MartechLandingPage/play.svg" alt="Play" width={20} height={20} className="brightness-0 invert" />
               Book a Demo
             </button>
           </div>
           <div className="flex items-center gap-6 text-sm text-white/90">
             <div className="flex items-center gap-2">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M7 10L9 12L13 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <Image src="/assets/Images/MartechLandingPage/check-circle-one.svg" alt="Check" width={20} height={20} className="brightness-0 invert" />
               <span>No credit card required</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M10 6V10L12.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <Image src="/assets/Images/MartechLandingPage/mingcute_time-line.svg" alt="Time" width={20} height={20} className="brightness-0 invert" />
               <span>Setup in under 5 minutes</span>
             </div>
           </div>

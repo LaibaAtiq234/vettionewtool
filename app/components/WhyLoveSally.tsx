@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function WhyLoveSally() {
   return (
     <section className="w-full py-20 bg-white">
@@ -28,13 +30,22 @@ export default function WhyLoveSally() {
               </div>
 
               {/* Sally Badge */}
-              <div className="bg-gradient-to-r from-purple-500 to-purple-400 backdrop-blur-md rounded-full px-8 py-6 flex items-center gap-4 shadow-lg border-2 border-white/30">
-                <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center">
-                  <img src="/sally-avatar.png" alt="Sally" className="w-10 h-10 rounded-lg" />
-                </div>
-                <div className="text-white">
-                  <div className="text-2xl font-semibold">Sally</div>
-                  <div className="text-sm opacity-90">Your Domain-Expert AI Recruiter</div>
+              <div className="bg-gradient-to-r from-[#4c4fc8] via-[#5d5fef] to-[#7879f1] backdrop-blur-md rounded-full px-8 py-6 flex items-center gap-4 shadow-lg border-3 border-[#d9d9d9] relative">
+                <div
+                  className="absolute inset-0 rounded-full opacity-30 pointer-events-none"
+                  style={{
+                    backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255,255,255,1) 60.417%, rgba(231,228,251,1) 100%)`
+                  }}
+                />
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center shadow-[0px_1.78px_1.78px_0px_rgba(0,0,0,0.09)] border-2 border-[#7879f1] relative z-10"
+                  style={{
+                    background: `url('/assets/Images/MartechLandingPage/sally-avatar.png') center 23.13%/100% 151.3% no-repeat`,
+                    boxShadow: '0px 1.78px 1.78px 0px rgba(0,0,0,0.04), -3.559px 5.339px 10.678px 0px rgba(21,16,255,0.08), 5.339px 5.339px 10.678px 0px rgba(250,3,255,0.06), 0px 1.78px 10.678px 0px rgba(98,77,227,0.12)'
+                  }}
+                />
+                <div className="text-white relative z-10">
+                  <div className="text-[32px] font-semibold">Sally</div>
+                  <div className="text-[20px] font-light opacity-95">Your Domain-Expert AI Recruiter</div>
                 </div>
               </div>
 
@@ -45,21 +56,21 @@ export default function WhyLoveSally() {
                     <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
                     <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <p className="text-[#020618]">Instantly recall any candidate Sally has interviewed or reviewed</p>
+                  <p className="text-[#020618] text-base">Instantly recall any candidate Sally has interviewed or reviewed</p>
                 </div>
                 <div className="flex items-start gap-2">
                   <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
                     <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <p className="text-[#020618]">Ask in natural language: "Show me the three most relevant candidates"</p>
+                  <p className="text-[#020618] text-base">Ask in natural language: "Show me the three most relevant candidates"</p>
                 </div>
                 <div className="flex items-start gap-2">
                   <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
                     <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <p className="text-[#020618]">No filters, no complexity .. just clear answers to your hiring questions</p>
+                  <p className="text-[#020618] text-base">No filters, no complexity .. just clear answers to your hiring questions</p>
                 </div>
               </div>
             </div>
@@ -318,17 +329,29 @@ export default function WhyLoveSally() {
           </button>
           <div className="flex items-center gap-6 text-sm text-[#64748b]">
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-[#5d5fef]" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <div className="relative w-5 h-5">
+                <Image
+                  src="/assets/Images/MartechLandingPage/check-circle-one.svg"
+                  alt="Check"
+                  width={20}
+                  height={20}
+                  className="filter brightness-0 saturate-100"
+                  style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
+                />
+              </div>
               <span>No credit card required</span>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-[#5d5fef]" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                <path d="M10 6V10L12.5 12.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <div className="relative w-5 h-5">
+                <Image
+                  src="/assets/Images/MartechLandingPage/mingcute_time-line.svg"
+                  alt="Time"
+                  width={20}
+                  height={20}
+                  className="filter brightness-0 saturate-100"
+                  style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
+                />
+              </div>
               <span>Setup in under 5 minutes</span>
             </div>
           </div>

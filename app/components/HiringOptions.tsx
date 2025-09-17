@@ -123,15 +123,30 @@ export default function HiringOptions() {
             Get Started For Free
           </button>
           <div className="flex gap-6 text-sm text-[#314158]">
-            <div className="flex items-center gap-1">
-              <CheckIcon color="#5d5fef" />
+            <div className="flex items-center gap-2">
+              <div className="relative w-5 h-5">
+                <Image
+                  src="/assets/Images/MartechLandingPage/check-circle-one.svg"
+                  alt="Check"
+                  width={20}
+                  height={20}
+                  className="filter brightness-0 saturate-100"
+                  style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
+                />
+              </div>
               <span>No credit card required</span>
             </div>
-            <div className="flex items-center gap-1">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10" cy="10" r="7" stroke="#5d5fef" strokeWidth="2"/>
-                <path d="M10 6V10L13 13" stroke="#5d5fef" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
+            <div className="flex items-center gap-2">
+              <div className="relative w-5 h-5">
+                <Image
+                  src="/assets/Images/MartechLandingPage/mingcute_time-line.svg"
+                  alt="Time"
+                  width={20}
+                  height={20}
+                  className="filter brightness-0 saturate-100"
+                  style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
+                />
+              </div>
               <span>Setup in under 5 minutes</span>
             </div>
           </div>

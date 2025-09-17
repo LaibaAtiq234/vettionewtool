@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { CheckIcon, XIcon, ClockIcon } from "./Icons";
 
 const BeforeAfterComparison = () => {
@@ -185,11 +186,29 @@ const BeforeAfterComparison = () => {
             </button>
             <div className="flex items-center gap-6 text-sm text-gray-600">
               <div className="flex items-center gap-2">
-                <CheckIcon color="#4f46e5" />
+                <div className="relative w-5 h-5">
+                  <Image
+                    src="/assets/Images/MartechLandingPage/check-circle-one.svg"
+                    alt="Check"
+                    width={20}
+                    height={20}
+                    className="filter brightness-0 saturate-100"
+                    style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
+                  />
+                </div>
                 <span>No credit card required</span>
               </div>
               <div className="flex items-center gap-2">
-                <ClockIcon color="#6b7280" />
+                <div className="relative w-5 h-5">
+                  <Image
+                    src="/assets/Images/MartechLandingPage/mingcute_time-line.svg"
+                    alt="Time"
+                    width={20}
+                    height={20}
+                    className="filter brightness-0 saturate-100"
+                    style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
+                  />
+                </div>
                 <span>Setup in under 5 minutes</span>
               </div>
             </div>
