@@ -77,96 +77,176 @@ export default function WhyLoveSally() {
           </div>
 
             {/* Domain-Expert AI Interviewer */}
-            <div className="bg-gradient-to-b from-[#462aac] to-[#a3b3ff] rounded-[40px] p-12 text-white">
-            <div className="flex flex-col gap-8 items-center justify-center">
-              <div className="flex flex-col gap-6 text-center">
-                <h2 className="text-4xl font-extrabold">
-                  Your Domain-Expert AI Interviewer
-                </h2>
-                <p className="text-xl">
-                  Sally doesn't just screen, she interviews like a true domain expert.
-                </p>
-              </div>
+            <div className="bg-gradient-to-b from-[#462aac] to-[#a3b3ff] rounded-[40px] p-12 text-white relative">
+              <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-6 text-center">
+                  <h2 className="text-[40px] font-extrabold leading-tight">
+                    Your Domain-Expert AI Interviewer
+                  </h2>
+                  <p className="text-xl">
+                    Sally doesn't just screen, she interviews like a true domain expert.
+                  </p>
+                </div>
 
-              {/* Features List */}
-              <div className="flex flex-col gap-3 w-full">
-                <div className="flex items-start gap-2">
-                  <svg className="w-6 h-6 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 10L19 14L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M19 14H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M5 10V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                  <p>Conducts thousands of interviews simultaneously</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <svg className="w-6 h-6 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="7" width="18" height="10" rx="2" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M12 12V14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                  <p>Tailors every interview to your specific job requirements</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <svg className="w-6 h-6 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                    <path d="M7 12L12 7L17 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M12 17V7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M3 17H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                  <p>Understands responses and asks smart, relevant follow-ups</p>
-                </div>
-              </div>
-
-              {/* Interview Preview */}
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-4 w-full">
-                <div className="bg-white rounded-xl overflow-hidden">
-                  <div className="bg-gray-50 p-3 flex items-center gap-2">
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    </div>
-                    <span className="text-sm text-gray-600 ml-2">Recording of the AI Interview</span>
+                {/* Features List */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/assets/Images/MartechLandingPage/interview-icon.png"
+                      alt="Interview"
+                      width={24}
+                      height={24}
+                      className="flex-shrink-0"
+                    />
+                    <p className="text-base">Conducts thousands of interviews simultaneously</p>
                   </div>
-                  <div className="p-4 bg-white">
-                    <p className="text-sm font-semibold text-gray-800 mb-4">Domain Focused Interview</p>
-                    <div className="bg-gray-100 rounded-lg h-32 flex items-center justify-center">
-                      <div className="text-gray-400">
-                        <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/assets/Images/MartechLandingPage/job-icon.png"
+                      alt="Job"
+                      width={24}
+                      height={24}
+                      className="flex-shrink-0"
+                    />
+                    <p className="text-base">Tailors every interview to your specific job requirements</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Image
+                      src="/assets/Images/MartechLandingPage/replace-icon.png"
+                      alt="Replace"
+                      width={24}
+                      height={24}
+                      className="flex-shrink-0"
+                    />
+                    <p className="text-base">Understands responses and asks smart, relevant follow-ups</p>
+                  </div>
+                </div>
+
+                {/* Interview Preview Window */}
+                <div className="relative">
+                  <div className="rounded-[24px] border-[14px] border-white/30 overflow-hidden shadow-2xl bg-white">
+                    {/* Browser Header */}
+                    <div className="bg-white">
+                      <div className="flex items-center justify-between px-4 pt-4">
+                        <div className="flex gap-2">
+                          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                      </div>
+                      <div className="bg-gray-50 mx-4 mt-3 mb-4 px-4 py-2 rounded-md">
+                        <p className="text-xs text-gray-800 font-medium">Recording of the AI Interview</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 mt-4">
-                      <button className="p-1.5 bg-white border border-gray-300 rounded-full">
-                        <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="none">
-                          <path d="M15 3H21V9" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                          <path d="M21 3L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                          <path d="M12 6H3V21H18V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                        </svg>
-                      </button>
-                      <button className="p-1.5 bg-white border border-gray-300 rounded-full">
-                        <svg className="w-4 h-4 text-gray-600" viewBox="0 0 24 24" fill="none">
-                          <path d="M12 1V23" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                          <path d="M5 8L12 1L19 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                        </svg>
-                      </button>
+
+                    {/* Content Area - Direct video with overlay */}
+                    <div className="bg-white px-6 pb-6">
+                      <p className="font-semibold text-base text-[#020618] mb-4">Domain Focused Interview</p>
+
+                      {/* Video Container */}
+                      <div className="relative rounded-xl overflow-hidden aspect-video bg-black">
+                        {/* Main Video */}
+                        <video
+                          className="w-full h-full object-cover"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                        >
+                          <source src="/assets/Images/MartechLandingPage/videothumbnail.mp4" type="video/mp4" />
+                        </video>
+
+                        {/* Sally Badge with Name - bottom left overlay */}
+                        <div className="absolute bottom-4 left-4 flex items-center gap-3 bg-black/70 backdrop-blur-md rounded-lg px-3 py-2">
+                          <div className="relative w-10 h-10 rounded-lg overflow-hidden border-2 border-white/30">
+                            <Image
+                              src="/assets/Images/MartechLandingPage/interview-video-thumbnail.png"
+                              alt="Sally"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="text-white">
+                            <p className="font-bold text-sm">Sally</p>
+                            <p className="text-xs opacity-90">Domain-Expert Interviewer</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Video Controls */}
+                      <div className="flex items-center gap-4 mt-4 justify-center">
+                        <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                          <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                            <rect x="5" y="7" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="2"/>
+                            <circle cx="12" cy="12" r="2" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </button>
+                        <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                          <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 5V19M12 19L7 14M12 19L17 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="absolute -right-20 -top-10 space-y-3">
-                  <div className="bg-black/90 backdrop-blur text-white rounded-2xl p-3 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-200/20 rounded-full flex items-center justify-center">
-                      <span>🎯</span>
+
+                  {/* Floating Badges - positioned outside the card */}
+                  {/* Domain Badge - top right */}
+                  <div className="absolute -top-4 -right-10 z-10">
+                    <div className="bg-black/90 backdrop-blur-lg text-white rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl">
+                      <div className="bg-[#7879f1] p-2 rounded-xl">
+                        <Image
+                          src="/assets/Images/MartechLandingPage/focus-icon.png"
+                          alt="Domain"
+                          width={24}
+                          height={24}
+                        />
+                      </div>
+                      <div>
+                        <p className="font-bold text-sm">Domain</p>
+                        <p className="text-sm opacity-90">Software Engineering</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-bold text-sm">Domain</p>
-                      <p className="text-xs opacity-90">Software Engineering</p>
+                  </div>
+
+                  {/* Focus Area Badge - middle right */}
+                  <div className="absolute top-20 -right-16 z-10">
+                    <div className="bg-[#7879f1] text-white rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl">
+                      <div className="bg-white/20 p-2 rounded-xl">
+                        <Image
+                          src="/assets/Images/MartechLandingPage/focus-area-icon.png"
+                          alt="Focus Area"
+                          width={24}
+                          height={24}
+                        />
+                      </div>
+                      <div>
+                        <p className="font-bold text-sm">Focus Area</p>
+                        <p className="text-sm opacity-90">Backend Development</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Assessing Badge - bottom right */}
+                  <div className="absolute bottom-20 -right-20 z-10">
+                    <div className="bg-[#7879f1] text-white rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl">
+                      <div className="bg-white/20 p-2 rounded-xl">
+                        <Image
+                          src="/assets/Images/MartechLandingPage/assessing-icon.png"
+                          alt="Assessing"
+                          width={24}
+                          height={24}
+                        />
+                      </div>
+                      <div className="max-w-[180px]">
+                        <p className="font-bold text-sm">Assessing</p>
+                        <p className="text-sm opacity-90 leading-tight">API Design, Data Structures & Algorithms</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           </div>
 
           {/* Right Column */}
