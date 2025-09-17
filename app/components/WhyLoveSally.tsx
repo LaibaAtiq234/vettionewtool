@@ -378,12 +378,12 @@ export default function WhyLoveSally() {
 
                   {/* Easy Apply Button Overlay */}
                   <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-white rounded-full shadow-[0px_4.915px_44.232px_0px_#5d5fef] px-8 py-5 flex items-center">
+                    <div className="bg-white rounded-full shadow-[0px_4.915px_44.232px_0px_#5d5fef] px-6 py-2.0 flex items-center">
                       <Image
                         src="/assets/Images/MartechLandingPage/linkedin-company-logo.png"
                         alt="Company"
-                        width={245}
-                        height={48}
+                        width={200}
+                        height={30}
                       />
                     </div>
                   </div>
@@ -398,79 +398,192 @@ export default function WhyLoveSally() {
             </div>
 
             {/* Super Enriched Candidate Profiles */}
-            <div className="bg-white border-2 border-gray-100 rounded-[40px] p-12">
-          <div className="flex flex-col gap-8 items-center justify-center">
-            <div className="flex flex-col gap-4 text-center">
-              <h2 className="text-4xl font-bold text-[#020618]">
-                Super Enriched Candidate Profiles
-              </h2>
-              <p className="text-lg text-[#62748e]">
-                Go beyond CVs with AI-powered insights
-              </p>
-            </div>
-
-            {/* Candidate Cards Preview */}
-            <div className="flex gap-4 justify-center">
-              <div className="bg-white rounded-xl border border-gray-200 p-4 w-48">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-purple-200 rounded-full"></div>
-                  <span className="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded">93%</span>
+            <div className="bg-[#ededff] rounded-[40px] p-12 relative">
+              <div className="flex flex-col gap-8 items-center justify-center">
+                <div className="flex flex-col gap-4 text-center">
+                  <h2 className="text-[40px] font-extrabold text-[#020618] leading-tight">
+                    Super Enriched Candidate Profiles
+                  </h2>
+                  <p className="text-xl text-[#62748e]">
+                    Go beyond CVs with AI-powered insights
+                  </p>
                 </div>
-                <p className="font-semibold text-sm mb-1">Eva Salam</p>
-                <p className="text-xs text-gray-600 mb-2">Software Developer</p>
-                <p className="text-xs text-gray-500">eva.salam@gmail.com</p>
-                <p className="text-xs text-gray-500 mt-2">Dubai, UAE</p>
-              </div>
 
-              <div className="bg-white rounded-xl border border-gray-200 p-4 w-48">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-blue-200 rounded-full"></div>
-                  <span className="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">91%</span>
-                </div>
-                <p className="font-semibold text-sm mb-1">Sandra Bowman</p>
-                <p className="text-xs text-gray-600 mb-2">Software Developer</p>
-                <p className="text-xs text-gray-500">sandra.b@gmail.com</p>
-                <p className="text-xs text-gray-500 mt-2">Dubai, UAE</p>
-              </div>
+                {/* Candidate Cards Container */}
+                <div className="relative w-full max-w-[500px]">
+                  {/* Background Card - Top Candidates */}
+                  <div className="backdrop-blur-[7.5px] bg-gradient-to-b from-white/60 to-white/50 rounded-lg p-3 border border-white shadow-xl">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[#5d5fef] font-medium text-sm">Top Candidates</span>
+                      <button className="p-1.5 bg-black/5 rounded-xl">
+                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                          <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                        </svg>
+                      </button>
+                    </div>
 
-              <div className="bg-white rounded-xl border border-gray-200 p-4 w-48">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-orange-200 rounded-full"></div>
-                  <span className="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded">89%</span>
+                    {/* Candidate Mini Cards Row */}
+                    <div className="flex gap-4 justify-between">
+                      {/* Eva Card */}
+                      <div className="flex flex-col items-center gap-2 relative">
+                        <div className="relative">
+                          <Image
+                            src="/assets/Images/MartechLandingPage/candidate-eva.png"
+                            alt="Eva Solain"
+                            width={55}
+                            height={55}
+                            className="rounded-full"
+                          />
+                          <div className="absolute -top-4 -right-4 bg-[#5d5fef] text-white text-[10px] font-semibold rounded px-1.5 py-0.5">
+                            97%<br/><span className="text-[6px]">Match</span>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[9px] font-medium text-black">Eva Solain</p>
+                          <p className="text-[9px] text-gray-700">Sr. Software Developer</p>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1">
+                            <svg className="w-2.5 h-2.5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                              <path d="M3 8L12 13L21 8M3 8L12 3L21 8M3 8V16L12 21L21 16V8" stroke="currentColor" strokeWidth="1.5"/>
+                            </svg>
+                            <span className="text-[9px] text-gray-700">eva.solain@gmail.com</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <svg className="w-2.5 h-2.5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                              <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="currentColor" strokeWidth="1.5"/>
+                              <circle cx="12" cy="9" r="3" stroke="currentColor" strokeWidth="1.5"/>
+                            </svg>
+                            <span className="text-[9px] text-gray-700">Dubai, UAE</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Sandra Card */}
+                      <div className="flex flex-col items-center gap-2 relative">
+                        <div className="relative">
+                          <Image
+                            src="/assets/Images/MartechLandingPage/candidate-sandra.png"
+                            alt="Sandra Bowman"
+                            width={55}
+                            height={55}
+                            className="rounded-full"
+                          />
+                          <div className="absolute -top-4 -right-4 bg-[#5d5fef] text-white text-[10px] font-semibold rounded px-1.5 py-0.5">
+                            91%<br/><span className="text-[6px]">Match</span>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[9px] font-medium text-black">Sandra Bowman</p>
+                          <p className="text-[9px] text-gray-700">Sr. Software Developer</p>
+                        </div>
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-1">
+                            <svg className="w-2.5 h-2.5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                              <path d="M3 8L12 13L21 8M3 8L12 3L21 8M3 8V16L12 21L21 16V8" stroke="currentColor" strokeWidth="1.5"/>
+                            </svg>
+                            <span className="text-[9px] text-gray-700">sandra.b@gmail.com</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <svg className="w-2.5 h-2.5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                              <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="currentColor" strokeWidth="1.5"/>
+                              <circle cx="12" cy="9" r="3" stroke="currentColor" strokeWidth="1.5"/>
+                            </svg>
+                            <span className="text-[9px] text-gray-700">Dubai, UAE</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Pierre Card (small) */}
+                      <div className="flex flex-col items-center gap-2 relative">
+                        <div className="relative">
+                          <Image
+                            src="/assets/Images/MartechLandingPage/candidate-pierre-1.png"
+                            alt="Pierre Ford"
+                            width={55}
+                            height={55}
+                            className="rounded-full"
+                          />
+                          <div className="absolute -top-4 -right-4 bg-[#5d5fef] text-white text-[10px] font-semibold rounded px-1.5 py-0.5">
+                            89%<br/><span className="text-[6px]">Match</span>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[9px] font-medium text-black">Pierre Ford</p>
+                          <p className="text-[9px] text-gray-700">Software Developer</p>
+                        </div>
+                        <button className="bg-gradient-to-b from-white/60 to-white/50 border border-white text-[9px] font-medium px-2 py-1 rounded-md flex items-center gap-1 shadow-sm">
+                          View Profile
+                          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Floating Pierre Card - Larger */}
+                  <div className="absolute -bottom-6 -right-8 bg-white rounded-xl shadow-[0px_3.471px_24.294px_0px_#5d5fef] p-4 w-52">
+                    <div className="relative mb-3">
+                      <Image
+                        src="/assets/Images/MartechLandingPage/candidate-pierre-2.png"
+                        alt="Pierre Ford"
+                        width={82}
+                        height={82}
+                        className="rounded-full mx-auto"
+                      />
+                      <div className="absolute -top-2 -right-2 bg-[#5d5fef] text-white text-sm font-semibold rounded-lg px-2 py-1.5">
+                        89%<br/><span className="text-[9px]">Match</span>
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-[13px] font-medium text-black">Pierre Ford</p>
+                      <p className="text-[13px] text-gray-700">Software Developer</p>
+                    </div>
+                    <div className="mt-2 space-y-1">
+                      <div className="flex items-center gap-1.5 justify-center">
+                        <svg className="w-3.5 h-3.5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                          <path d="M3 8L12 13L21 8M3 8L12 3L21 8M3 8V16L12 21L21 16V8" stroke="currentColor" strokeWidth="1.5"/>
+                        </svg>
+                        <span className="text-[10px] text-gray-700">pierre.f@gmail.com</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 justify-center">
+                        <svg className="w-3.5 h-3.5 text-gray-600" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22S19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="currentColor" strokeWidth="1.5"/>
+                          <circle cx="12" cy="9" r="3" stroke="currentColor" strokeWidth="1.5"/>
+                        </svg>
+                        <span className="text-[10px] text-gray-700">Montreal, Canada</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="font-semibold text-sm mb-1">Pierre Ford</p>
-                <p className="text-xs text-gray-600 mb-2">Software Developer</p>
-                <p className="text-xs text-gray-500">pierre.f@gmail.com</p>
-                <p className="text-xs text-gray-500 mt-2">Montreal, Canada</p>
+
+                {/* Features List */}
+                <div className="flex flex-col gap-3 w-full mt-8">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-[#5d5fef] flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="text-[#020618] text-base">View the most relevant experience at a glance</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-[#5d5fef] flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="text-[#020618] text-base">See each candidate's match against every requirement</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-[#5d5fef] flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="text-[#020618] text-base">Compare candidates with AI-driven scores and evaluations</p>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Features List */}
-            <div className="flex flex-col gap-3 w-full">
-              <div className="flex items-start gap-2">
-                <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <p className="text-[#020618]">View the most relevant experience at a glance</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <p className="text-[#020618]">See each candidate's match against every requirement</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <p className="text-[#020618]">Compare candidates with AI-driven scores and evaluations</p>
-              </div>
-            </div>
-          </div>
-        </div>
           </div>
         </div>
 
