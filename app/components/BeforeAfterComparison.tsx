@@ -71,7 +71,7 @@ const BeforeAfterComparison = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="pt-16 pb-8 px-4 md:px-8 overflow-hidden relative">
+    <section ref={sectionRef} className="pt-12 md:pt-16 pb-6 md:pb-8 px-4 md:px-8 overflow-hidden relative">
       {/* Background pattern */}
       <div className="absolute inset-0 pointer-events-none">
         <Image
@@ -85,17 +85,17 @@ const BeforeAfterComparison = () => {
       </div>
 
       {/* Top purple gradient overlay */}
-      <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-[#7879f1]/15 via-[#5d5fef]/5 to-transparent pointer-events-none z-0"></div>
+      <div className="absolute inset-x-0 top-0 h-32 md:h-64 bg-gradient-to-b from-[#7879f1]/15 via-[#5d5fef]/5 to-transparent pointer-events-none z-0"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8 md:mb-12 px-4">
           From CV Chaos to Qualified Shortlists in Minutes
         </h2>
 
-        <div className="relative max-w-[1200px] mx-auto">
-          <div className="bg-gradient-to-r from-gray-50 via-purple-50 to-purple-100 rounded-2xl shadow-xl border-2 border-white relative overflow-hidden">
-            {/* Glass abstraction sphere - rightmost section */}
-            <div className="absolute left-[650px] top-[-140px] w-[800px] h-[800px] pointer-events-none">
+        <div className="relative max-w-full lg:max-w-[1200px] mx-auto">
+          <div className="bg-gradient-to-r from-gray-50 via-purple-50 to-purple-100 rounded-xl md:rounded-2xl shadow-xl border-2 border-white relative overflow-hidden">
+            {/* Glass abstraction sphere - hidden on mobile, visible on desktop */}
+            <div className="hidden lg:block absolute left-[650px] top-[-140px] w-[800px] h-[800px] pointer-events-none">
               <div
                 className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-80"
                 style={{
@@ -105,8 +105,8 @@ const BeforeAfterComparison = () => {
               />
             </div>
 
-            {/* Floating badges over the glass sphere */}
-            <div className="absolute right-[3%] top-[20%] space-y-5 z-10">
+            {/* Floating badges - hidden on mobile, visible on desktop */}
+            <div className="hidden lg:block absolute right-[3%] top-[20%] space-y-5 z-10">
               {/* Badge 1 - Purple/Blue */}
               <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 ml-16 max-w-[180px] transform transition-all duration-700 ${badgesVisible.includes(1) ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '100ms' }}>
@@ -156,13 +156,13 @@ const BeforeAfterComparison = () => {
               </div>
             </div>
 
-            <div className="relative flex">
+            <div className="relative flex flex-col lg:flex-row">
               {/* Before Sally Column */}
-              <div className={`bg-white border-r border-gray-200 transition-all duration-500 w-[387px] ${beforeSallyVisible.length > 0 ? 'opacity-100' : 'opacity-30'}`}>
-                <div className="p-6 pb-3">
-                  <h3 className="text-2xl font-bold text-[#020618] mb-3">Before Sally</h3>
+              <div className={`bg-white lg:border-r border-b lg:border-b-0 border-gray-200 transition-all duration-500 w-full lg:w-[387px] ${beforeSallyVisible.length > 0 ? 'opacity-100' : 'opacity-30'}`}>
+                <div className="p-4 md:p-6 pb-3">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#020618] mb-3">Before Sally</h3>
                 </div>
-                <div className="px-6 pb-6 space-y-2">
+                <div className="px-4 md:px-6 pb-4 md:pb-6 space-y-2">
                   <div className={`flex items-start gap-3 transition-all duration-500 ${beforeSallyVisible.includes(1) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center">
                       <XIcon color="#62748e" size={20} />
@@ -221,11 +221,11 @@ const BeforeAfterComparison = () => {
               </div>
 
               {/* After Sally Column */}
-              <div className={`bg-transparent border-r border-transparent transition-all duration-500 w-[387px] ${afterSallyVisible.length > 0 ? 'opacity-100' : 'opacity-30'}`}>
-                <div className="p-6 pb-3">
-                  <h3 className="text-2xl font-bold text-[#020618] mb-3">After Sally</h3>
+              <div className={`bg-transparent lg:border-r border-transparent transition-all duration-500 w-full lg:w-[387px] ${afterSallyVisible.length > 0 ? 'opacity-100' : 'opacity-30'}`}>
+                <div className="p-4 md:p-6 pb-3">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#020618] mb-3">After Sally</h3>
                 </div>
-                <div className="px-6 pb-6 space-y-2">
+                <div className="px-4 md:px-6 pb-4 md:pb-6 space-y-2">
                   <div className={`flex items-start gap-3 transition-all duration-500 ${afterSallyVisible.includes(1) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
                       <div className="w-5 h-5 rounded-full bg-[#5d5fef] flex items-center justify-center">

@@ -5,18 +5,18 @@ const FooterSection = () => {
   return (
     <footer className="bg-white">
       {/* CTA Section */}
-      <div className="px-6 py-12 md:py-16 flex flex-col items-center">
+      <div className="px-4 md:px-6 py-8 md:py-12 lg:py-16 flex flex-col items-center">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 md:mb-8">
             Unlock Better Hires with <br />Intelligent Recruiting
           </h2>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <button className="bg-[#7879f1] hover:bg-[#6668e3] text-white font-bold px-8 py-3 rounded-xl transition-colors shadow-lg">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-6">
+            <button className="bg-[#7879f1] hover:bg-[#6668e3] text-white font-bold px-6 md:px-8 py-2.5 md:py-3 rounded-xl transition-colors shadow-lg text-sm md:text-base">
               Get Started For Free
             </button>
-            <button className="bg-white border-2 border-[#5d5fef] text-[#020618] font-bold px-8 py-3 rounded-xl hover:bg-[#f6f8ff] transition-colors flex items-center justify-center gap-2 shadow-lg">
+            <button className="bg-white border-2 border-[#5d5fef] text-[#020618] font-bold px-6 md:px-8 py-2.5 md:py-3 rounded-xl hover:bg-[#f6f8ff] transition-colors flex items-center justify-center gap-2 shadow-lg text-sm md:text-base">
               <Image src="/assets/Images/MartechLandingPage/bookademo.svg" alt="Play" width={20} height={20} />
               Book a Demo
             </button>
@@ -60,11 +60,11 @@ const FooterSection = () => {
               alt=""
               width={600}
               height={400}
-              className="opacity-100"
+              className="opacity-100 hidden md:block"
             />
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12 relative z-10">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
               {/* Left Section - Logo and Description */}
               <div className="flex flex-col gap-4">
@@ -86,11 +86,11 @@ const FooterSection = () => {
               </div>
 
               {/* Right Section - CTA Buttons */}
-              <div className="flex flex-col gap-4">
-                <button className="bg-[#7879f1] hover:bg-[#6668e3] text-white font-bold px-8 py-3 rounded-xl transition-colors shadow-lg">
+              <div className="flex flex-col gap-3 md:gap-4 w-full md:w-auto">
+                <button className="bg-[#7879f1] hover:bg-[#6668e3] text-white font-bold px-6 md:px-8 py-2.5 md:py-3 rounded-xl transition-colors shadow-lg text-sm md:text-base">
                   Get Started For Free
                 </button>
-                <button className="bg-transparent border border-[#5d5fef] text-white font-bold px-8 py-3 rounded-xl hover:bg-[#5d5fef]/10 transition-colors flex items-center justify-center gap-2">
+                <button className="bg-transparent border border-[#5d5fef] text-white font-bold px-6 md:px-8 py-2.5 md:py-3 rounded-xl hover:bg-[#5d5fef]/10 transition-colors flex items-center justify-center gap-2 text-sm md:text-base">
                   <Image src="/assets/Images/MartechLandingPage/bookademo.svg" alt="Play" width={20} height={20} />
                   Book a Demo
                 </button>
@@ -100,9 +100,9 @@ const FooterSection = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="bg-white px-6 py-8">
+        <div className="bg-white px-4 md:px-6 py-6 md:py-8">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6">
               {/* Logo */}
               <div className="flex items-center gap-2">
                 <Image
@@ -115,33 +115,33 @@ const FooterSection = () => {
               </div>
 
               {/* Links */}
-              <div className="flex items-center gap-6 text-sm text-[#62748e] font-medium">
+              <div className="flex items-center gap-4 md:gap-6 text-sm text-[#62748e] font-medium order-2 lg:order-none">
                 <a href="#" className="hover:text-[#5d5fef] transition-colors">Contact</a>
                 <a href="#" className="hover:text-[#5d5fef] transition-colors">Privacy</a>
                 <a href="#" className="hover:text-[#5d5fef] transition-colors">Terms</a>
               </div>
 
               {/* Copyright */}
-              <div className="text-sm text-[#62748e]">
+              <div className="text-xs md:text-sm text-[#62748e] order-4 lg:order-none">
                 © 2025 Vettio. All Rights Reserved.
               </div>
 
               {/* Social Icons */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 md:gap-4 order-3 lg:order-none">
                 <a href="#" className="hover:opacity-70 transition-opacity">
-                  <Image src="/assets/Images/MartechLandingPage/x-twitter.png" alt="X" width={24} height={24} />
+                  <Image src="/assets/Images/MartechLandingPage/x-twitter.png" alt="X" width={20} height={20} className="md:w-6 md:h-6" />
                 </a>
                 <a href="#" className="hover:opacity-70 transition-opacity">
-                  <Image src="/assets/Images/MartechLandingPage/instagram.svg" alt="Instagram" width={24} height={24} />
+                  <Image src="/assets/Images/MartechLandingPage/instagram.svg" alt="Instagram" width={20} height={20} className="md:w-6 md:h-6" />
                 </a>
                 <a href="#" className="hover:opacity-70 transition-opacity">
-                  <Image src="/assets/Images/MartechLandingPage/tiktok.png" alt="TikTok" width={24} height={24} />
+                  <Image src="/assets/Images/MartechLandingPage/tiktok.png" alt="TikTok" width={20} height={20} className="md:w-6 md:h-6" />
                 </a>
                 <a href="#" className="hover:opacity-70 transition-opacity">
-                  <Image src="/assets/Images/MartechLandingPage/brand-linkedin.svg" alt="TikTok" width={24} height={24} />
+                  <Image src="/assets/Images/MartechLandingPage/brand-linkedin.svg" alt="LinkedIn" width={20} height={20} className="md:w-6 md:h-6" />
                 </a>
                 <a href="#" className="hover:opacity-70 transition-opacity">
-                  <Image src="/assets/Images/MartechLandingPage/youtube.png" alt="YouTube" width={24} height={24} />
+                  <Image src="/assets/Images/MartechLandingPage/youtube.png" alt="YouTube" width={20} height={20} className="md:w-6 md:h-6" />
                 </a>
               </div>
             </div>

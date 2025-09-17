@@ -17,11 +17,11 @@ const WhySwitchToSally = () => {
   ];
 
   return (
-    <section className="py-20 px-4 md:px-8 bg-gradient-to-b from-purple-50/30 to-white">
+    <section className="py-12 md:py-20 px-4 md:px-8 bg-gradient-to-b from-purple-50/30 to-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col items-center gap-3 mb-14">
-          <h2 className="text-4xl font-bold text-gray-900 text-center">
+        <div className="flex flex-col items-center gap-3 mb-8 md:mb-14">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center">
             Why switch to Sally?
           </h2>
           <p className="text-gray-500 text-center">
@@ -30,10 +30,10 @@ const WhySwitchToSally = () => {
         </div>
 
         {/* Comparison Table */}
-        <div className="flex gap-8 justify-center">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center overflow-x-auto">
           {/* Features Column */}
-          <div className="flex flex-col gap-6">
-            <div className="bg-[#7879f1] px-6 py-1.5 rounded-full flex items-center gap-2 self-start">
+          <div className="flex flex-col gap-4 md:gap-6 min-w-0 lg:min-w-fit">
+            <div className="bg-[#7879f1] px-4 md:px-6 py-1.5 rounded-full flex items-center gap-2 self-start text-sm md:text-base">
               <Image
                 src="/assets/Images/MartechLandingPage/switchtosallyvector.svg"
                 alt="Features"

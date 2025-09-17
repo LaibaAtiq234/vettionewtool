@@ -17,7 +17,7 @@ export default function CVCalculator() {
     : `${remainingMinutes} ${remainingMinutes === 1 ? 'Min' : 'Mins'}`
 
   return (
-    <section className="w-full py-20 relative overflow-hidden" style={{
+    <section className="w-full py-12 md:py-16 lg:py-20 relative overflow-hidden" style={{
       background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(65, 30, 148, 0.07) 100%)'
     }}>
       {/* Smooth curved background pattern - matching Figma design */}
@@ -128,47 +128,47 @@ export default function CVCalculator() {
         />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-24 items-center">
           {/* Left side - Results */}
-          <div>
-            <h2 className="text-5xl font-bold text-[#020618] leading-tight mb-4">
+          <div className="order-1 lg:order-1">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#020618] leading-tight mb-3 md:mb-4">
               Calculate Your CV<br />
               Screening Hours.
             </h2>
-            <p className="text-xl text-[#757575] mb-10">
+            <p className="text-base sm:text-lg lg:text-xl text-[#757575] mb-6 md:mb-8 lg:mb-10">
               See how many hours your team spends just screening CVs.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               <div>
-                <p className="text-xl font-medium text-[#314158] mb-1">Total Roles =</p>
-                <p className="text-6xl font-extrabold text-[#020618]">{roles}</p>
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-[#314158] mb-1">Total Roles =</p>
+                <p className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#020618]">{roles}</p>
               </div>
 
               <div>
-                <p className="text-xl font-medium text-[#314158] mb-1">Total Applications =</p>
-                <p className="text-6xl font-extrabold text-[#020618]">{totalApplications.toLocaleString()}</p>
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-[#314158] mb-1">Total Applications =</p>
+                <p className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#020618]">{totalApplications.toLocaleString()}</p>
               </div>
 
               <div>
-                <p className="text-xl font-medium text-[#314158] mb-1">Total Screening Time =</p>
-                <p className="text-5xl font-extrabold text-[#5d5fef]">{timeDisplay}</p>
+                <p className="text-base sm:text-lg lg:text-xl font-medium text-[#314158] mb-1">Total Screening Time =</p>
+                <p className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#5d5fef]">{timeDisplay}</p>
               </div>
             </div>
           </div>
 
           {/* Right side - Calculator */}
-          <div className="bg-white border-2 border-slate-100 rounded-lg shadow-lg p-12">
-            <div className="space-y-14">
+          <div className="bg-white border-2 border-slate-100 rounded-lg shadow-lg p-6 sm:p-8 md:p-10 lg:p-12 order-2 lg:order-2">
+            <div className="space-y-8 md:space-y-10 lg:space-y-14">
               {/* Number of Roles Slider */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <label className="text-xl font-semibold">
+                  <label className="text-base sm:text-lg lg:text-xl font-semibold">
                     <span className="text-[#482af2]">Number</span>
                     <span className="text-[#62748e]"> Of Roles</span>
                   </label>
-                  <div className="bg-[#482af2] text-white px-4 py-1 rounded-full text-2xl font-medium min-w-[82px] text-center">
+                  <div className="bg-[#482af2] text-white px-3 sm:px-4 py-1 rounded-full text-lg sm:text-xl lg:text-2xl font-medium min-w-[60px] sm:min-w-[70px] lg:min-w-[82px] text-center">
                     {roles}
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function CVCalculator() {
                       background: `linear-gradient(to right, #482af2 0%, #7879f1 ${roles}%, #f0f0f0 ${roles}%, #f0f0f0 100%)`
                     }}
                   />
-                  <div className="flex justify-between text-sm text-gray-500 mt-1">
+                  <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
                     <span>0</span>
                     <span>100</span>
                   </div>
@@ -194,11 +194,11 @@ export default function CVCalculator() {
               {/* Applications Per Role Slider */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <label className="text-xl font-semibold">
+                  <label className="text-base sm:text-lg lg:text-xl font-semibold">
                     <span className="text-[#482af2]">Applications</span>
                     <span className="text-[#62748e]"> Per Role</span>
                   </label>
-                  <div className="bg-[#482af2] text-white px-4 py-1 rounded-full text-2xl font-medium min-w-[82px] text-center">
+                  <div className="bg-[#482af2] text-white px-3 sm:px-4 py-1 rounded-full text-lg sm:text-xl lg:text-2xl font-medium min-w-[60px] sm:min-w-[70px] lg:min-w-[82px] text-center">
                     {applicationsPerRole}
                   </div>
                 </div>
@@ -214,7 +214,7 @@ export default function CVCalculator() {
                       background: `linear-gradient(to right, #482af2 0%, #7879f1 ${(applicationsPerRole/1000)*100}%, #f0f0f0 ${(applicationsPerRole/1000)*100}%, #f0f0f0 100%)`
                     }}
                   />
-                  <div className="flex justify-between text-sm text-gray-500 mt-1">
+                  <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
                     <span>0</span>
                     <span>1000</span>
                   </div>
@@ -224,11 +224,11 @@ export default function CVCalculator() {
               {/* Minutes Per CV Slider */}
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <label className="text-xl font-semibold">
+                  <label className="text-base sm:text-lg lg:text-xl font-semibold flex-1 mr-2">
                     <span className="text-[#482af2]">Minutes</span>
                     <span className="text-[#62748e]"> Spent Reviewing Each CV</span>
                   </label>
-                  <div className="bg-[#482af2] text-white px-4 py-1 rounded-full text-2xl font-medium min-w-[82px] text-center">
+                  <div className="bg-[#482af2] text-white px-3 sm:px-4 py-1 rounded-full text-lg sm:text-xl lg:text-2xl font-medium min-w-[60px] sm:min-w-[70px] lg:min-w-[82px] text-center flex-shrink-0">
                     {minutesPerCV}
                   </div>
                 </div>
@@ -244,7 +244,7 @@ export default function CVCalculator() {
                       background: `linear-gradient(to right, #482af2 0%, #7879f1 ${minutesPerCV}%, #f0f0f0 ${minutesPerCV}%, #f0f0f0 100%)`
                     }}
                   />
-                  <div className="flex justify-between text-sm text-gray-500 mt-1">
+                  <div className="flex justify-between text-xs sm:text-sm text-gray-500 mt-1">
                     <span>0</span>
                     <span>100</span>
                   </div>
@@ -252,8 +252,8 @@ export default function CVCalculator() {
               </div>
             </div>
 
-            <div className="mt-14 text-center">
-              <p className="text-sm font-medium text-[#62748e]">Calculate Your Hiring Time Lost</p>
+            <div className="mt-8 md:mt-10 lg:mt-14 text-center">
+              <p className="text-xs sm:text-sm font-medium text-[#62748e]">Calculate Your Hiring Time Lost</p>
             </div>
           </div>
         </div>
@@ -262,22 +262,50 @@ export default function CVCalculator() {
       <style jsx>{`
         input[type="range"]::-webkit-slider-thumb {
           appearance: none;
-          width: 26px;
-          height: 26px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
           background: #482af2;
           cursor: pointer;
           box-shadow: 0 0 10px rgba(72, 42, 242, 0.3);
         }
 
+        @media (min-width: 640px) {
+          input[type="range"]::-webkit-slider-thumb {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          input[type="range"]::-webkit-slider-thumb {
+            width: 26px;
+            height: 26px;
+          }
+        }
+
         input[type="range"]::-moz-range-thumb {
-          width: 26px;
-          height: 26px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
           background: #482af2;
           cursor: pointer;
           border: none;
           box-shadow: 0 0 10px rgba(72, 42, 242, 0.3);
+        }
+
+        @media (min-width: 640px) {
+          input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          input[type="range"]::-moz-range-thumb {
+            width: 26px;
+            height: 26px;
+          }
         }
       `}</style>
     </section>
