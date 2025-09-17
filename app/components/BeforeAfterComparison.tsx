@@ -71,7 +71,7 @@ const BeforeAfterComparison = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 px-4 md:px-8 overflow-hidden">
+    <section ref={sectionRef} className="pt-16 pb-8 px-4 md:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
           From CV Chaos to Qualified Shortlists in Minutes
@@ -287,39 +287,7 @@ const BeforeAfterComparison = () => {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col items-center gap-3">
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl transition-colors">
-              Get Started For Free
-            </button>
-            <div className="flex items-center gap-6 text-sm text-gray-600">
-              <div className="flex items-center gap-2">
-                <div className="relative w-5 h-5">
-                  <Image
-                    src="/assets/Images/MartechLandingPage/check-circle-one.svg"
-                    alt="Check"
-                    width={20}
-                    height={20}
-                    className="filter brightness-0 saturate-100"
-                    style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
-                  />
-                </div>
-                <span>No credit card required</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="relative w-5 h-5">
-                  <Image
-                    src="/assets/Images/MartechLandingPage/mingcute_time-line.svg"
-                    alt="Time"
-                    width={20}
-                    height={20}
-                    className="filter brightness-0 saturate-100"
-                    style={{ filter: 'invert(24%) sepia(98%) saturate(1952%) hue-rotate(196deg) brightness(94%) contrast(101%)' }}
-                  />
-                </div>
-                <span>Setup in under 5 minutes</span>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>

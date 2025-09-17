@@ -6,6 +6,7 @@ import CVCalculator from "./components/CVCalculator";
 import BeforeAfterComparison from "./components/BeforeAfterComparison";
 import HowSallyWorks from "./components/HowSallyWorks";
 import WhyLoveSally from "./components/WhyLoveSally";
+import SectionDivider from "./components/SectionDivider";
 import WhySwitchToSally from "./components/WhySwitchToSally";
 import TestimonialsSection from "./components/TestimonialsSection";
 import SecurityPrivacySection from "./components/SecurityPrivacySection";
@@ -25,6 +26,7 @@ export default function Home() {
       <HowSallyWorks />
       <WhyLoveSally />
       <BeforeAfterComparison />
+      <SectionDivider />
       <WhySwitchToSally />
       <TestimonialsSection />
       <SecurityPrivacySection/>
