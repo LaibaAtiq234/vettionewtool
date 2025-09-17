@@ -57,75 +57,74 @@ const BeforeAfterComparison = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 px-4 md:px-8">
+    <section ref={sectionRef} className="py-16 px-4 md:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
           From CV Chaos to Qualified Shortlists in Minutes
         </h2>
 
-        <div className="relative">
-          <div className="bg-gradient-to-r from-gray-50 to-purple-50 rounded-2xl overflow-hidden shadow-xl border border-gray-200 relative">
-            {/* Glass abstraction sphere background - positioned behind After Sally section */}
-            <div className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none">
+        <div className="relative max-w-[1200px] mx-auto">
+          <div className="bg-gradient-to-r from-gray-50 via-purple-50 to-purple-100 rounded-2xl shadow-xl border-2 border-white relative overflow-hidden">
+            {/* Glass abstraction sphere - rightmost section */}
+            <div className="absolute left-[650px] top-[-140px] w-[800px] h-[800px] pointer-events-none">
               <div
-                className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-90"
+                className="absolute inset-0 bg-contain bg-center bg-no-repeat opacity-80"
                 style={{
                   backgroundImage: `url('/assets/Images/MartechLandingPage/glass abstraction sphere.png')`,
+                  transform: 'scale(1.1)',
                 }}
               />
             </div>
 
             {/* Floating badges over the glass sphere */}
-            <div className={`absolute right-4 md:right-12 top-8 md:top-12 space-y-2 z-10 transition-all duration-1000 ${showFloatingBadges ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`absolute right-[15%] top-[20%] space-y-3 z-10 transition-all duration-1000 ${showFloatingBadges ? 'opacity-100' : 'opacity-0'}`}>
               {/* Badge 1 - Purple/Blue */}
-              <div className={`bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2 shadow-md border border-white/50 max-w-[200px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
+              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '100ms' }}>
-                <div className="bg-purple-100 rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#7c3aed" size={14} />
+                <div className="bg-[rgba(165,166,246,0.6)] rounded-full p-1 flex-shrink-0">
+                  <CheckIcon color="#4300ff" size={14} />
                 </div>
-                <span className="text-xs text-gray-700 leading-tight">100+ hours saved on manual screening</span>
+                <span className="text-xs text-[#314158] leading-tight">100+ hours saved on manual screening</span>
               </div>
 
               {/* Badge 2 - Yellow/Orange */}
-              <div className={`bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2 shadow-md border border-white/50 ml-6 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
+              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 -ml-8 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '200ms' }}>
-                <div className="bg-orange-100 rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#ea580c" size={14} />
+                <div className="bg-[rgba(249,157,27,0.4)] rounded-full p-1 flex-shrink-0">
+                  <CheckIcon color="#f97015" size={14} />
                 </div>
-                <span className="text-xs text-gray-700 leading-tight">50% higher recruiter productivity</span>
+                <span className="text-xs text-[#314158] leading-tight">50% higher recruiter productivity</span>
               </div>
 
               {/* Badge 3 - Indigo */}
-              <div className={`bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2 shadow-md border border-white/50 ml-3 max-w-[200px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
+              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 -ml-12 max-w-[200px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '300ms' }}>
-                <div className="bg-indigo-100 rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#6366f1" size={14} />
+                <div className="bg-[#5d5fef] rounded-full p-1 flex-shrink-0">
+                  <CheckIcon color="#ffffff" size={14} />
                 </div>
-                <span className="text-xs text-gray-700 leading-tight">One-click Easy Apply = 2x more applicants</span>
+                <span className="text-xs text-[#314158] leading-tight">One-click Easy Apply = 2x more applicants</span>
               </div>
 
               {/* Badge 4 - Light Indigo */}
-              <div className={`bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 flex items-center gap-2 shadow-md border border-white/50 ml-8 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
+              <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '400ms' }}>
-                <div className="bg-purple-100 rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#7c3aed" size={14} />
+                <div className="bg-[#7879f1] rounded-full p-1 flex-shrink-0">
+                  <CheckIcon color="#e5e7eb" size={14} />
                 </div>
-                <span className="text-xs text-gray-700 leading-tight">1,000+ CVs screened in minutes</span>
+                <span className="text-xs text-[#314158] leading-tight">1,000+ CVs screened in minutes</span>
               </div>
             </div>
 
-            <div className="relative grid md:grid-cols-2 gap-0">
+            <div className="relative flex">
               {/* Before Sally Column */}
-              <div className={`bg-white/95 backdrop-blur-sm border-r border-gray-200 transition-all duration-500 ${currentStep >= 1 ? 'opacity-100' : 'opacity-30'}`}>
+              <div className={`bg-white border-r border-gray-200 transition-all duration-500 w-[387px] ${currentStep >= 1 ? 'opacity-100' : 'opacity-30'}`}>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-[#020618] mb-4">Before Sally</h3>
                 </div>
                 <div className="px-6 pb-6 space-y-3">
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 1 && visibleItems >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded border-2 border-gray-400 flex items-center justify-center">
-                        <XIcon color="#9ca3af" size={12} />
-                      </div>
+                      <XIcon color="#62748e" size={24} />
                     </div>
                     <p className="text-sm text-[#62748e] leading-relaxed">
                       Keyword-based ATS → false positives & negatives
@@ -133,9 +132,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 2 && visibleItems >= 2 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded border-2 border-gray-400 flex items-center justify-center">
-                        <XIcon color="#9ca3af" size={12} />
-                      </div>
+                      <XIcon color="#62748e" size={24} />
                     </div>
                     <p className="text-sm text-[#62748e] leading-relaxed">
                       100s of irrelevant CVs, days wasted screening
@@ -143,9 +140,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 3 && visibleItems >= 3 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded border-2 border-gray-400 flex items-center justify-center">
-                        <XIcon color="#9ca3af" size={12} />
-                      </div>
+                      <XIcon color="#62748e" size={24} />
                     </div>
                     <p className="text-sm text-[#62748e] leading-relaxed">
                       Hiring managers spend hours interviewing wrong candidates
@@ -153,9 +148,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 4 && visibleItems >= 4 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded border-2 border-gray-400 flex items-center justify-center">
-                        <XIcon color="#9ca3af" size={12} />
-                      </div>
+                      <XIcon color="#62748e" size={24} />
                     </div>
                     <p className="text-sm text-[#62748e] leading-relaxed">
                       "Easy Apply" floods you with junk applications
@@ -163,9 +156,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 5 && visibleItems >= 5 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded border-2 border-gray-400 flex items-center justify-center">
-                        <XIcon color="#9ca3af" size={12} />
-                      </div>
+                      <XIcon color="#62748e" size={24} />
                     </div>
                     <p className="text-sm text-[#62748e] leading-relaxed">
                       Disable "Easy Apply" → miss out on great talent
@@ -173,9 +164,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded border-2 border-gray-400 flex items-center justify-center">
-                        <XIcon color="#9ca3af" size={12} />
-                      </div>
+                      <XIcon color="#62748e" size={24} />
                     </div>
                     <p className="text-sm text-[#62748e] leading-relaxed">
                       Manual downloads of 1000s of CVs
@@ -183,22 +172,22 @@ const BeforeAfterComparison = () => {
                   </div>
                 </div>
                 <div className="px-6 pb-6">
-                  <div className={`flex items-center gap-2 bg-red-50 text-red-600 px-3 py-1.5 rounded-full inline-flex transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100' : 'opacity-0'}`}>
-                    <ClockIcon color="#dc2626" size={16} />
+                  <div className={`flex items-center gap-2 text-[#1e1e1e] transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100' : 'opacity-0'}`}>
+                    <ClockIcon color="#62748e" size={20} />
                     <span className="text-sm font-medium">Time to hire: 6-8 weeks</span>
                   </div>
                 </div>
               </div>
 
               {/* After Sally Column */}
-              <div className={`bg-transparent transition-all duration-500 ${currentStep >= 1 ? 'opacity-100' : 'opacity-30'}`}>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-[#020618] mb-4">After Sally</h3>
+              <div className={`bg-transparent border-r border-transparent transition-all duration-500 w-[387px] ${currentStep >= 1 ? 'opacity-100' : 'opacity-30'}`}>
+                <div className="p-6 pb-3">
+                  <h3 className="text-2xl font-bold text-[#020618] mb-3">After Sally</h3>
                 </div>
-                <div className="px-6 pb-6 space-y-3">
+                <div className="px-6 pb-6 space-y-2">
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 1 && visibleItems >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-[#5d5fef] flex items-center justify-center">
                         <CheckIcon color="#ffffff" size={12} />
                       </div>
                     </div>
@@ -208,7 +197,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 2 && visibleItems >= 2 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-[#5d5fef] flex items-center justify-center">
                         <CheckIcon color="#ffffff" size={12} />
                       </div>
                     </div>
@@ -218,7 +207,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 3 && visibleItems >= 3 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-[#5d5fef] flex items-center justify-center">
                         <CheckIcon color="#ffffff" size={12} />
                       </div>
                     </div>
@@ -228,7 +217,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 4 && visibleItems >= 4 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-[#5d5fef] flex items-center justify-center">
                         <CheckIcon color="#ffffff" size={12} />
                       </div>
                     </div>
@@ -238,7 +227,7 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 5 && visibleItems >= 5 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-[#5d5fef] flex items-center justify-center">
                         <CheckIcon color="#ffffff" size={12} />
                       </div>
                     </div>
@@ -248,21 +237,26 @@ const BeforeAfterComparison = () => {
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
                     <div className="mt-0.5 flex-shrink-0">
-                      <div className="w-5 h-5 rounded-full bg-purple-500 flex items-center justify-center">
+                      <div className="w-5 h-5 rounded-full bg-[#5d5fef] flex items-center justify-center">
                         <CheckIcon color="#ffffff" size={12} />
                       </div>
                     </div>
                     <p className="text-sm text-black leading-relaxed">
-                      Auto-imports every CV → faster hiring
+                      Auto-imports every CV → faster hiring process
                     </p>
                   </div>
                 </div>
                 <div className="px-6 pb-6">
-                  <div className={`flex items-center gap-2 bg-purple-500 text-white px-3 py-1.5 rounded-full inline-flex transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100' : 'opacity-0'}`}>
-                    <ClockIcon color="#ffffff" size={16} />
+                  <div className={`flex items-center gap-2 bg-[#5d5fef] text-white px-3 py-1.5 rounded-full inline-flex transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100' : 'opacity-0'}`}>
+                    <ClockIcon color="#ffffff" size={20} />
                     <span className="text-sm font-medium">Time to hire: 1-2 weeks</span>
                   </div>
                 </div>
+              </div>
+
+              {/* Remaining space for glass sphere */}
+              <div className="flex-1">
+                {/* Glass sphere is positioned absolutely */}
               </div>
             </div>
           </div>
