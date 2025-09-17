@@ -1,6 +1,20 @@
 'use client'
 
+import { useState, useEffect } from 'react'
+
 export default function HowSallyWorks() {
+  const [percentage, setPercentage] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPercentage((prev) => {
+        if (prev >= 100) return 0
+        return prev + 5
+      })
+    }, 150)
+
+    return () => clearInterval(interval)
+  }, [])
   return (
     <section className="w-full py-20 bg-gradient-to-b from-[#7879f1] to-[#5d5fef]">
       <div className="max-w-7xl mx-auto px-10">
@@ -56,18 +70,24 @@ export default function HowSallyWorks() {
               />
               <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-[#f6f8ff]/90 backdrop-blur rounded-lg p-3 shadow-lg border border-white z-10 scale-90">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#9747ff] rounded-lg flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 12L11 14L15 10M12 3V5M12 19V21M5 12H3M21 12H19M5.636 5.636L4.222 4.222M18.364 18.364L19.778 19.778M5.636 18.364L4.222 19.778M18.364 5.636L19.778 4.222" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  <div className="w-10 h-10 bg-[#9747ff] rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg className="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.25"/>
+                      <path d="M12 2C17.523 2 22 6.477 22 12" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                     </svg>
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <div className="text-xs font-bold text-[#2b2b2b]">Scanning CVs</div>
-                    <div className="w-28 h-1.5 bg-[#ececec] rounded-full mt-1">
-                      <div className="w-1/4 h-full bg-[#ff2b2b] rounded-full animate-pulse"></div>
+                    <div className="w-32 h-2 bg-[#ececec] rounded-full mt-1 overflow-hidden relative">
+                      <div
+                        className="absolute left-0 top-0 h-full bg-[#ff2b2b] rounded-full transition-all duration-150 ease-linear"
+                        style={{ width: `${percentage}%` }}
+                      ></div>
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-[#585858]">0%</span>
+                  <span className="text-xs font-bold text-[#585858] tabular-nums w-10 text-right flex-shrink-0">
+                    {percentage}%
+                  </span>
                 </div>
               </div>
             </div>
@@ -86,8 +106,8 @@ export default function HowSallyWorks() {
         {/* Step Cards Grid - Second Row (3 cards) */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Step 3 Card */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg h-[420px] flex flex-col">
-            <div className="h-[200px] rounded-xl mb-4 flex items-center justify-center overflow-hidden flex-shrink-0 relative">
+          <div className="bg-white rounded-2xl p-6 shadow-lg h-[541px] flex flex-col">
+            <div className="h-[269px] rounded-xl mb-4 flex items-center justify-center overflow-hidden flex-shrink-0 relative">
               <div
                 className="absolute inset-0 rounded-xl"
                 style={{
@@ -99,19 +119,19 @@ export default function HowSallyWorks() {
               />
             </div>
             <div className="flex flex-col flex-grow">
-              <div className="text-xs font-medium text-[#7879f1] mb-2">STEP 3</div>
-              <h3 className="text-xl font-bold text-[#020618] mb-3">
+              <div className="text-sm font-medium text-[#5d5fef] mb-2">STEP 3</div>
+              <h3 className="text-2xl font-bold text-[#020618] mb-3 capitalize">
                 Get Your Ranked Shortlist With Video Interviews
               </h3>
-              <p className="text-sm text-[#64748b] leading-relaxed">
+              <p className="text-base text-[#314158] leading-relaxed">
                 Sally presents your top candidates with structured video interviews, giving you deeper insights into their personality and communication skills.
               </p>
             </div>
           </div>
 
           {/* Step 4 Card */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg h-[420px] flex flex-col">
-            <div className="h-[200px] rounded-xl mb-4 flex items-center justify-center overflow-hidden flex-shrink-0 relative">
+          <div className="bg-white rounded-2xl p-6 shadow-lg h-[541px] flex flex-col">
+            <div className="h-[269px] rounded-xl mb-4 flex items-center justify-center overflow-hidden flex-shrink-0 relative">
               <div
                 className="absolute inset-0 rounded-xl"
                 style={{
@@ -123,19 +143,19 @@ export default function HowSallyWorks() {
               />
             </div>
             <div className="flex flex-col flex-grow">
-              <div className="text-xs font-medium text-[#7879f1] mb-2">STEP 4</div>
-              <h3 className="text-xl font-bold text-[#020618] mb-3">
+              <div className="text-sm font-medium text-[#5d5fef] mb-2">STEP 4</div>
+              <h3 className="text-2xl font-bold text-[#020618] mb-3 capitalize">
                 Chat With Sally To Refine Your Shortlist
               </h3>
-              <p className="text-sm text-[#64748b] leading-relaxed">
+              <p className="text-base text-[#314158] leading-relaxed">
                 Ask Sally anything about your candidates. She knows their skills, experience, and how they match your requirements.
               </p>
             </div>
           </div>
 
           {/* Step 5 Card */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg h-[420px] flex flex-col">
-            <div className="h-[200px] rounded-xl mb-4 flex items-center justify-center overflow-hidden flex-shrink-0 relative">
+          <div className="bg-white rounded-2xl p-6 shadow-lg h-[541px] flex flex-col">
+            <div className="h-[269px] rounded-xl mb-4 flex items-center justify-center overflow-hidden flex-shrink-0 relative">
               <div
                 className="absolute inset-0 rounded-xl"
                 style={{
@@ -147,11 +167,11 @@ export default function HowSallyWorks() {
               />
             </div>
             <div className="flex flex-col flex-grow">
-              <div className="text-xs font-medium text-[#7879f1] mb-2">STEP 5</div>
-              <h3 className="text-xl font-bold text-[#020618] mb-3">
+              <div className="text-sm font-medium text-[#5d5fef] mb-2">STEP 5</div>
+              <h3 className="text-2xl font-bold text-[#020618] mb-3 capitalize">
                 Make Your Final Decision With Confidence
               </h3>
-              <p className="text-sm text-[#64748b] leading-relaxed">
+              <p className="text-base text-[#314158] leading-relaxed">
                 Review Sally's comprehensive analysis, compare top candidates side-by-side, and make your hiring decision with complete confidence.
               </p>
             </div>
