@@ -52,14 +52,15 @@ const FooterSection = () => {
 
       {/* Dark Footer Section */}
       <div className="relative">
-        <div className="bg-[#231f20] text-white rounded-t-lg shadow-[0px_-4px_20px_0px_rgba(93,95,239,0.1)] relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-10">
+        <div className="bg-[#231F20] text-white rounded-t-lg shadow-[0px_-4px_20px_0px_rgba(93,95,239,0.1)] relative overflow-hidden">
+          {/* Center decorative image */}
+          <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
             <Image
-              src="/assets/Images/MartechLandingPage/footer-bg-pattern.svg"
+              src="/assets/Images/MartechLandingPage/footermid.png"
               alt=""
-              fill
-              className="object-cover"
+              width={600}
+              height={400}
+              className="opacity-100"
             />
           </div>
 
