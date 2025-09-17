@@ -82,7 +82,13 @@ const BeforeAfterComparison = () => {
               <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '100ms' }}>
                 <div className="bg-[rgba(165,166,246,0.6)] rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#4300ff" size={14} />
+                  <Image
+                    src="/assets/Images/MartechLandingPage/check-circle-one.svg"
+                    alt=""
+                    width={14}
+                    height={14}
+                    style={{ filter: 'brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7466%) hue-rotate(246deg) brightness(84%) contrast(143%)' }}
+                  />
                 </div>
                 <span className="text-xs text-[#314158] leading-tight">100+ hours saved on manual screening</span>
               </div>
@@ -91,7 +97,13 @@ const BeforeAfterComparison = () => {
               <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 -ml-8 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '200ms' }}>
                 <div className="bg-[rgba(249,157,27,0.4)] rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#f97015" size={14} />
+                  <Image
+                    src="/assets/Images/MartechLandingPage/check-circle-one.svg"
+                    alt=""
+                    width={14}
+                    height={14}
+                    style={{ filter: 'brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(4deg) brightness(95%) contrast(97%)' }}
+                  />
                 </div>
                 <span className="text-xs text-[#314158] leading-tight">50% higher recruiter productivity</span>
               </div>
@@ -100,7 +112,7 @@ const BeforeAfterComparison = () => {
               <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 -ml-12 max-w-[200px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '300ms' }}>
                 <div className="bg-[#5d5fef] rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#ffffff" size={14} />
+                  <Image src="/assets/Images/MartechLandingPage/check-circle-one.svg" alt="" width={14} height={14} />
                 </div>
                 <span className="text-xs text-[#314158] leading-tight">One-click Easy Apply = 2x more applicants</span>
               </div>
@@ -109,7 +121,7 @@ const BeforeAfterComparison = () => {
               <div className={`bg-white/90 backdrop-blur-md rounded-2xl rounded-br-sm px-3 py-3 flex items-center gap-2 shadow-lg border border-gray-200 max-w-[180px] transform transition-all duration-700 ${showFloatingBadges ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
                    style={{ transitionDelay: '400ms' }}>
                 <div className="bg-[#7879f1] rounded-full p-1 flex-shrink-0">
-                  <CheckIcon color="#e5e7eb" size={14} />
+                  <Image src="/assets/Images/MartechLandingPage/check-circle-one.svg" alt="" width={14} height={14} />
                 </div>
                 <span className="text-xs text-[#314158] leading-tight">1,000+ CVs screened in minutes</span>
               </div>
@@ -118,62 +130,62 @@ const BeforeAfterComparison = () => {
             <div className="relative flex">
               {/* Before Sally Column */}
               <div className={`bg-white border-r border-gray-200 transition-all duration-500 w-[387px] ${currentStep >= 1 ? 'opacity-100' : 'opacity-30'}`}>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-[#020618] mb-4">Before Sally</h3>
+                <div className="p-6 pb-3">
+                  <h3 className="text-2xl font-bold text-[#020618] mb-3">Before Sally</h3>
                 </div>
-                <div className="px-6 pb-6 space-y-3">
+                <div className="px-6 pb-6 space-y-2">
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 1 && visibleItems >= 1 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-                    <div className="mt-0.5 flex-shrink-0">
-                      <XIcon color="#62748e" size={24} />
+                    <div className="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                      <XIcon color="#62748e" size={20} />
                     </div>
-                    <p className="text-sm text-[#62748e] leading-relaxed">
+                    <p className="text-sm text-[#62748e] leading-relaxed max-w-[280px]">
                       Keyword-based ATS → false positives & negatives
                     </p>
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 2 && visibleItems >= 2 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-                    <div className="mt-0.5 flex-shrink-0">
-                      <XIcon color="#62748e" size={24} />
+                    <div className="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                      <XIcon color="#62748e" size={20} />
                     </div>
-                    <p className="text-sm text-[#62748e] leading-relaxed">
+                    <p className="text-sm text-[#62748e] leading-relaxed max-w-[280px]">
                       100s of irrelevant CVs, days wasted screening
                     </p>
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 3 && visibleItems >= 3 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-                    <div className="mt-0.5 flex-shrink-0">
-                      <XIcon color="#62748e" size={24} />
+                    <div className="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                      <XIcon color="#62748e" size={20} />
                     </div>
-                    <p className="text-sm text-[#62748e] leading-relaxed">
+                    <p className="text-sm text-[#62748e] leading-relaxed max-w-[280px]">
                       Hiring managers spend hours interviewing wrong candidates
                     </p>
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 4 && visibleItems >= 4 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-                    <div className="mt-0.5 flex-shrink-0">
-                      <XIcon color="#62748e" size={24} />
+                    <div className="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                      <XIcon color="#62748e" size={20} />
                     </div>
-                    <p className="text-sm text-[#62748e] leading-relaxed">
+                    <p className="text-sm text-[#62748e] leading-relaxed max-w-[280px]">
                       "Easy Apply" floods you with junk applications
                     </p>
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 5 && visibleItems >= 5 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-                    <div className="mt-0.5 flex-shrink-0">
-                      <XIcon color="#62748e" size={24} />
+                    <div className="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                      <XIcon color="#62748e" size={20} />
                     </div>
-                    <p className="text-sm text-[#62748e] leading-relaxed">
+                    <p className="text-sm text-[#62748e] leading-relaxed max-w-[280px]">
                       Disable "Easy Apply" → miss out on great talent
                     </p>
                   </div>
                   <div className={`flex items-start gap-3 transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
-                    <div className="mt-0.5 flex-shrink-0">
-                      <XIcon color="#62748e" size={24} />
+                    <div className="mt-0.5 flex-shrink-0 w-5 h-5 flex items-center justify-center">
+                      <XIcon color="#62748e" size={20} />
                     </div>
-                    <p className="text-sm text-[#62748e] leading-relaxed">
+                    <p className="text-sm text-[#62748e] leading-relaxed max-w-[280px]">
                       Manual downloads of 1000s of CVs
                     </p>
                   </div>
                 </div>
                 <div className="px-6 pb-6">
                   <div className={`flex items-center gap-2 text-[#1e1e1e] transition-all duration-500 ${currentStep >= 6 && visibleItems >= 6 ? 'opacity-100' : 'opacity-0'}`}>
-                    <ClockIcon color="#62748e" size={20} />
+                    <ClockIcon color="#ef4444" size={20} />
                     <span className="text-sm font-medium">Time to hire: 6-8 weeks</span>
                   </div>
                 </div>
