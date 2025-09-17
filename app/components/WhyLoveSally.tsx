@@ -320,78 +320,82 @@ export default function WhyLoveSally() {
           {/* Right Column */}
           <div className="flex flex-col gap-12">
             {/* LinkedIn Easy Apply Section */}
-            <div className="bg-[#e6f3ff] rounded-[40px] p-12">
-          <div className="flex flex-col gap-8 items-center justify-center">
-            {/* LinkedIn Icon */}
-            <div className="w-24 h-24 bg-gradient-to-br from-[#0077B5] to-[#00A0DC] rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-white text-5xl font-bold">in</span>
-            </div>
+            <div className="bg-[#e2f0ff] rounded-[40px] p-12 relative overflow-hidden">
+              <div className="flex flex-col gap-8 items-center justify-center relative z-10">
+                {/* LinkedIn Icon */}
+                <Image
+                  src="/assets/Images/MartechLandingPage/linkedin-logo.png"
+                  alt="LinkedIn"
+                  width={108}
+                  height={108}
+                  className="drop-shadow-lg"
+                />
 
-            <div className="flex flex-col gap-4 text-center">
-              <h2 className="text-4xl font-bold text-[#020618]">
-                Automatic candidate imports from{' '}
-                <span className="text-[#0077B5]">LinkedIn Easy Apply</span>
-              </h2>
-              <p className="text-lg text-[#62748e]">
-                Never lose a candidate again because Sally keeps your pipeline full.
-              </p>
-            </div>
+                <div className="flex flex-col gap-4 text-center">
+                  <h2 className="text-[40px] font-extrabold text-[#020618] leading-tight">
+                    Automatic candidate imports from{' '}
+                    <span className="text-[#5d5fef]">LinkedIn Easy Apply</span>
+                  </h2>
+                  <p className="text-xl text-[#62748e]">
+                    Never lose a candidate again because Sally keeps your pipeline full.
+                  </p>
+                </div>
 
-            {/* Features List */}
-            <div className="flex flex-col gap-3 w-full">
-              <div className="flex items-start gap-2">
-                <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <p className="text-[#020618]">Connect your email once, and you're done</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <p className="text-[#020618]">Sally automatically imports all applicants from LinkedIn Easy Apply</p>
-              </div>
-              <div className="flex items-start gap-2">
-                <svg className="w-6 h-6 text-[#5d5fef] mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <p className="text-[#020618]">Sally continuously syncs new applicants as they apply in the future</p>
-              </div>
-            </div>
-
-            {/* LinkedIn UI Preview */}
-            <div className="bg-white rounded-2xl p-4 shadow-lg w-full">
-              <div className="bg-gradient-to-r from-orange-400 to-orange-500 p-3 rounded-t-lg flex items-center justify-between">
-                <span className="text-white text-sm font-semibold">BECAUSE EVERY HIRE MATTERS</span>
-                <span className="text-white font-bold">VETTIO</span>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gray-200 rounded-full"></div>
-                  <div>
-                    <p className="font-semibold text-gray-800">Vettio</p>
-                    <p className="text-sm text-gray-600">Technology company</p>
+                {/* Features List */}
+                <div className="flex flex-col gap-3 w-full">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-[#5d5fef] flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="text-[#020618] text-base">Connect your email once, and you're done</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-[#5d5fef] flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="text-[#020618] text-base">Sally automatically imports all applicants from LinkedIn Easy Apply</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-6 h-6 text-[#5d5fef] flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M8 12L11 15L16 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <p className="text-[#020618] text-base">Sally continuously syncs new applicants as they apply in the future</p>
                   </div>
                 </div>
-                <div className="flex gap-3 justify-center">
-                  <button className="bg-[#0077B5] text-white px-6 py-2 rounded-full font-medium flex items-center gap-2">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                      <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M8 11V16M8 8V8.01M12 16V11M16 16V13C16 11.8954 15.1046 11 14 11C12.8954 11 12 11.8954 12 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                    Easy Apply
-                  </button>
-                  <button className="bg-white text-[#0077B5] border border-[#0077B5] px-6 py-2 rounded-full font-medium">
-                    Save
-                  </button>
+
+                {/* LinkedIn Profile Mockup */}
+                <div className="relative mt-8">
+                  <Image
+                    src="/assets/Images/MartechLandingPage/linkedin-profile-mockup.png"
+                    alt="LinkedIn Profile"
+                    width={607}
+                    height={467}
+                    className="rounded-xl"
+                  />
+
+                  {/* Easy Apply Button Overlay */}
+                  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-white rounded-full shadow-[0px_4.915px_44.232px_0px_#5d5fef] px-8 py-5 flex items-center">
+                      <Image
+                        src="/assets/Images/MartechLandingPage/linkedin-company-logo.png"
+                        alt="Company"
+                        width={245}
+                        height={48}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              {/* Background decoration */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-gradient-to-br from-[#5d5fef]/10 to-transparent rounded-full blur-3xl"></div>
+                <div className="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-bl from-[#5d5fef]/10 to-transparent rounded-full blur-3xl"></div>
+              </div>
             </div>
-          </div>
-        </div>
 
             {/* Super Enriched Candidate Profiles */}
             <div className="bg-white border-2 border-gray-100 rounded-[40px] p-12">
